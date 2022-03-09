@@ -53,8 +53,11 @@ def scrape_page(this_url:str):
     titles_list =[]
     years_list = []
     certificates_list=[]
+    runtimes_list=[]
     genres_list=[]
+    desc_list=[]
     imdb_ratings_list=[]
+    metascores_list=[]
     votes_list=[]
     gross_list=[]
 
@@ -62,26 +65,35 @@ def scrape_page(this_url:str):
         title = b.find("a").text
         year = b.find("span", {"class":"lister-item-year text-muted unbold"}).text
         certificate = b.find("span", {"class": "certificate"}).text
+        runtime = b.find("span", {"class": "runtime"}).text
         genre = b.find("span", {"class": "genre"}).text
+        desc = b.find_all("p",{"class":"text-muted"})[1].text
         imdb_rating = b.find("div", {"class":"inline-block ratings-imdb-rating"}).text
+        metascore = b.find("div", {"class": "inline-block ratings-metascore"}).text
         votes = b.find_all("span", {"name":"nv"})[0].text
         gross = b.find_all("span", {"name":"nv"})[1].text
 
         titles_list.append(title)
         years_list.append(year)
         certificates_list.append(certificate)
+        runtimes_list.append(runtime)
         genres_list.append(genre)
+        desc_list.append(desc)
         imdb_ratings_list.append(imdb_rating)
+        metascores_list.append(metascore)
         votes_list.append(votes)
         gross_list.append(gross)
         
     data = pd.DataFrame({"Title": titles_list, 
-                 "Release Year": years_list,
-                 "Certificate": certificates_list,
-                "Genres": genres_list,
-                "IMDB Rating": imdb_ratings_list,
-                "Votes": votes_list,
-                "Gross Revenue": gross_list})
+                         "ReleaseYear": years_list,
+                         "Certificate": certificates_list,
+                         "Runtime":runtimes_list,
+                         "Genres": genres_list,
+                         "Description":desc_list,
+                         "IMDBRating": imdb_ratings_list,
+                         "Metascore":metascores_list,
+                         "Votes": votes_list,
+                         "GrossRevenue": gross_list})
         
     return data
 
