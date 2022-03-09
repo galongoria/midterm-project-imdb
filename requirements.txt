@@ -1,3 +1,4 @@
 # Added by Elliott
 requests
 bs4
+nb_black
