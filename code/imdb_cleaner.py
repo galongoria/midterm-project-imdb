@@ -37,6 +37,7 @@ def read_and_clean_imdb(path):
         .sort_values(by="GrossRevenue", ascending=False)
         .drop(columns=["genre_pull"])
     )
+
     return data
 
 
