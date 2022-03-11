@@ -74,3 +74,9 @@ plt.figure(figsize=(20,10))
 graph2 = sns.scatterplot(data=df5, x='Metascore', y='GrossRevenue')
 graph2.axhline(124.986511, color = 'red')
 graph2.axvline(59.651798, color = 'red')
+
+plt.figure(figsize=(15,8))
+sns.lineplot(data=df5, x='ReleaseYear', y='GrossRevenue')
+
+plt.figure(figsize=(15,8))
+sns.lineplot(data=df5, x='ReleaseYear', y='Runtime')
