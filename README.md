@@ -6,7 +6,7 @@ Team Members:
 * [Elliott Metzler](https://github.com/ElliottMetzler) - Data Scraping and Cleaning, Git/Project Management
 * [Pedro Rodrigues](https://github.com/PedroNBRodrigues) - Figure Production
 * [Colin McNally](https://github.com/cmcnally23) - Project Management, Report Writing
-* [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing
+* [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing, Presentation
 * [Arpan Chatterji](https://github.com/achatterji1) - Quantitative Analysis
 * [Kashaf Oneeb](https://github.com/koneeb) - Data Dictionary, Report Writing
 
@@ -43,7 +43,7 @@ Need to include here a summary of:
 * limitations of the project
 * Areas where we would have improved or expanded the project if we had more time
 
-## Instructions to reproduce Analysis:
+## Instructions to Reproduce Analysis:
 
 1) Set-up Instructions:
 	* Run `pip install -r requirements.txt`
