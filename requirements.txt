@@ -3,3 +3,7 @@ requests
 bs4
 nb_black
 black
+
+# From Pedro's Plotting Files
+matplotlib
+seaborn
