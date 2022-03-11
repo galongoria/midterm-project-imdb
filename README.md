@@ -2,7 +2,13 @@
 
 Team Good-2-Great Midterm Project for Python, Data, and Databases
 
-Team Members: [Elliott Metzler](https://github.com/ElliottMetzler), [Pedro Rodrigues](https://github.com/PedroNBRodrigues), [Colin McNally](https://github.com/cmcnally23), [Austin Longoria](https://github.com/galongoria), [Arpan Chatterji](https://github.com/achatterji1), [Kashaf Oneeb](https://github.com/koneeb)
+Team Members: 
+* [Elliott Metzler](https://github.com/ElliottMetzler) - Data Scraping and Cleaning, Git/Project Management
+* [Pedro Rodrigues](https://github.com/PedroNBRodrigues) - Figure Production
+* [Colin McNally](https://github.com/cmcnally23) - Project Management, Report Writing
+* [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing
+* [Arpan Chatterji](https://github.com/achatterji1) - Quantitative Analysis
+* [Kashaf Oneeb](https://github.com/koneeb) - Data Dictionary, Report Writing
 
 Due: 3/22/2022 
 
@@ -14,6 +20,17 @@ Need to include here a quick summary of:
 * Findings
 
 ## Data
+
+Short description, include a link to a file containing our data dictionary produced by Kashaf
+
+### Scraping
+
+INSERT Description of scraping procedure
+
+### Cleaning
+
+INSERT Description of cleaning procedure.
+
 
 ## Exploratory Data Analysis
 
