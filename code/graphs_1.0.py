@@ -75,3 +75,21 @@ if __name__ == "__main__":
     plot8 = plt.figure(figsize=(15, 8))
     plot8 = sns.lineplot(data=df, x="ReleaseYear", y="Runtime")
     save_plot(plot8.figure, OUT_DIR, "Figure8.png")
+
+    # Ninth plot
+    plot9 = plt.figure(figsize=(15, 8))
+    plot9 = sns.lineplot(data=df, x="Certificate", y="Runtime", ci=False)
+    save_plot(plot9.figure, OUT_DIR, "Figure9.png")
+    
+    # Tenth plot
+    plot10 = plt.figure(figsize=(15, 8))
+    plot10 = sns.lineplot(data=df, x="Certificate", y="GrossRevenue", ci=False)
+    save_plot(plot10.figure, OUT_DIR, "Figure10.png")
+    
+    # Eleventh plot
+    plot11 = plt.figure(figsize=(20, 10))
+    plot11 = graph2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
+    plot11.axhline(np.mean(df["GrossRevenue"]), color="red")
+    plot11.axvline(np.mean(df["ReleaseYear"]), color="red")
+    save_plot(plot11.figure, OUT_DIR, "Figure10.png")
+
