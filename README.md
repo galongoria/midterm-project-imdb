@@ -2,7 +2,7 @@
 
 Team Good-2-Great Midterm Project for Python, Data, and Databases
 
-Team Members: Elliott Metzler, Pedro Rodrigues, Colin McNally, Austin Longoria, Arpan Chatterji, Kashaf Oneeb
+Team Members: [Elliott Metzler](https://github.com/ElliottMetzler), [Pedro Rodrigues](https://github.com/PedroNBRodrigues), [Colin McNally](https://github.com/cmcnally23), [Austin Longoria](https://github.com/galongoria), [Arpan Chatterji](https://github.com/achatterji1), [Kashaf Oneeb](https://github.com/koneeb)
 
 Due: 3/22/2022 
 
@@ -27,8 +27,6 @@ Need to include here a summary of:
 * Areas where we would have improved or expanded the project if we had more time
 
 ## Instructions to reproduce Analysis:
-
-Need to include here a bulleted list of the exact steps to reproduce everything:
 
 1) Set-up Instructions:
 	* Run `pip install -r requirements.txt`
