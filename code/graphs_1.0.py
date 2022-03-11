@@ -92,3 +92,4 @@ if __name__ == "__main__":
     plot11.axhline(np.mean(df["GrossRevenue"]), color="red")
     plot11.axvline(np.mean(df["ReleaseYear"]), color="red")
     save_plot(plot11.figure, OUT_DIR, "Figure10.png")
+
