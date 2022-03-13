@@ -21,7 +21,7 @@ Need to include here a quick summary of:
 
 ## Data
 
-The features used in our analysis are described in the [Data Dictionary](data_dictionary.csv), which includes the feature name, definition, type, and example values.
+The features used in our analysis are described in the [Data Dictionary](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/data/clean/data_dictionary.csv), which includes the feature name, definition, type, and example values.
 
 ### Scraping
 
