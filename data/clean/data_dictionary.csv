@@ -1,0 +1,11 @@
+,Definition,Data Type,Example Values
+Title,Title of the movie,object,"['Star Wars: Episode VII - The Force Awakens', 'Avengers: Endgame', 'Avatar', 'Black Panther']"
+ReleaseYear,Year the movie was released,int64,"[2015, 2019, 2009, 2018]"
+Certificate,Motion Picture Association rating of the movie,object,"['PG-13', 'PG', 'G', 'R']"
+Runtime,Runtime Length of the movie in minutes,int64,"[138, 181, 162, 134]"
+Genres,Genres Movie category based on narrative elements,object,"['Action, Adventure, Sci-Fi', 'Action, Adventure, Drama', 'Action, Adventure, Fantasy', 'Drama, Romance']"
+Description,Description A brief description of the movie plot,object,"['As a new threat to the galaxy rises, Rey, a desert scavenger, and Finn, an ex-stormtrooper, must join Han Solo and Chewbacca to search for the one hope of restoring peace.', ""After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."", 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.', ""T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country's past.""]"
+IMDBRating,IMDBRating IMDB rating of the movie (1 to 10),float64,"[7.9, 8.4, 7.3, 8.5]"
+Metascore,Metascore Metascore of the movie assigned by movie critics (0 to 100),int64,"[80, 78, 83, 88]"
+Votes,Votes The number of votes cast by IMDB users for the movie,int64,"[902828, 1022652, 1182876, 710485]"
+GrossRevenue,Gross revenue of the movie in millions of dollars,float64,"[936.66, 858.37, 760.51, 700.06]"
