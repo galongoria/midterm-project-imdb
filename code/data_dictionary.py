@@ -29,12 +29,12 @@ def give_data_description(df_data_dict, out_path):
         "Title of the movie",
        "Year the movie was released",
        "Motion Picture Association rating of the movie",
-       "Runtime Length of the movie in minutes",
-       "Genres Movie category based on narrative elements",
-       "Description A brief description of the movie plot",
-       "IMDBRating IMDB rating of the movie (1 to 10)",
-       "Metascore Metascore of the movie assigned by movie critics (0 to 100)",
-       "Votes The number of votes cast by IMDB users for the movie",
+       "Length of the movie in minutes",
+       "Movie category based on narrative elements",
+       "A brief description of the movie plot",
+       "IMDB rating of the movie (1 to 10)",
+       "Metascore of the movie assigned by movie critics (0 to 100)",
+       "The number of votes cast by IMDB users for the movie",
        "Gross revenue of the movie in millions of dollars"
     ]
     
