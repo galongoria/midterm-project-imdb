@@ -14,14 +14,16 @@ def decade_summary(out_path):
     
     (
     df.assign(Decade=lambda df: (df["ReleaseYear"]//10)*10)
+    .drop("ReleaseYear", axis=1)
     .groupby("Decade")
     .describe()
+    .round(decimals=2)
     .to_csv(SUMMARY_PATH)
     )
 
 
 def ols_regression(out_path):
-    '''Perform OLS regression of movie revenue by IMBD score and Metascore and create csv'''
+    '''Perform OLS regression of movie revenue by IMBD score, Metascore, and Release Year and create csv'''
 
     x = df[["IMDBRating", "Metascore", "ReleaseYear"]]
     y = df["GrossRevenue"]
