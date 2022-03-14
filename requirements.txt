@@ -7,3 +7,6 @@ black
 # From Pedro's Plotting Files
 matplotlib
 seaborn
+
+# From Kashaf's quant analysis files
+statsmodels
