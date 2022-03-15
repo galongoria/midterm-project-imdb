@@ -40,7 +40,15 @@ def read_and_clean_imdb(path):
     return data
 
 
+
+def dummy_cols(data):
+        dummies = data["Genres"].str.get_dummies(sep=', ')
+        data = pd.concat([data, dummies], axis = 1) 
+        return data
+
+
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     clean_data = read_and_clean_imdb(IN_FILE_PATH)
-    clean_data.to_csv(OUT_PATH, index=False)
+    clean_data_dummies = dummy_cols(clean_data)
+    clean_data_dummies.to_csv(OUT_PATH, index=False)
