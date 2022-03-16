@@ -24,8 +24,13 @@ def decade_summary(out_path):
 
 def ols_regression(out_path):
     '''Perform OLS regression of movie revenue by IMBD score, Metascore, and Release Year and create csv'''
+    
+    x_cols = ["IMDBRating", "Metascore", "ReleaseYear"]
+    dummy_cols = df.columns[10:-1]
+    for col in dummy_cols:
+        x_cols.append(col)
 
-    x = df[["IMDBRating", "Metascore", "ReleaseYear"]]
+    x = df[x_cols]
     y = df["GrossRevenue"]
     model = sm.OLS(y, sm.add_constant(x))
     model_fit = model.fit()
