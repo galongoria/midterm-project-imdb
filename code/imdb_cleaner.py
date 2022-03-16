@@ -41,11 +41,11 @@ def read_and_clean_imdb(path):
     return data
 
 
-
 def dummy_cols(data):
-        dummies = data["Genres"].str.get_dummies(sep=', ')
-        data = pd.concat([data, dummies], axis = 1) 
-        return data
+    """Function accepts the semi-cleaned IMDB data and gets dummy variables for the various genres. Returns the dataframe with added dummy columns"""
+    dummies = data["Genres"].str.get_dummies(sep=", ")
+    data = pd.concat([data, dummies], axis=1)
+    return data
 
 
 if __name__ == "__main__":
