@@ -8,7 +8,7 @@ Team Members:
 * [Colin McNally](https://github.com/cmcnally23) - Project Management, Report Writing
 * [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing, Presentation
 * [Arpan Chatterji](https://github.com/achatterji1) - Quantitative Analysis
-* [Kashaf Oneeb](https://github.com/koneeb) - Data Dictionary, Report Writing
+* [Kashaf Oneeb](https://github.com/koneeb) - Quantitative Analysis, Data Dictionary, Report Writing
 
 Due: 3/22/2022 
 
@@ -21,7 +21,7 @@ Need to include here a quick summary of:
 
 ## Data
 
-The features used in our analysis are described in the [Data Dictionary](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/data/clean/data_dictionary.csv), which includes the feature name, definition, type, and example values.
+The features used in our analysis are summarized in the [Data Dictionary](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/data/clean/data_dictionary.csv), which includes the feature name, definition, type, and example values.
 
 ### Scraping
 
@@ -32,7 +32,6 @@ We note that one of the important limitations of our analysis is with our method
 ### Cleaning
 
 INSERT Description of cleaning procedure.
-
 
 ## Exploratory Data Analysis
 
