@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # Sixth Plot - scatterplot with all movies showing relation between Metascore and revenue, with mean lines to separate in quadrants
     plot6 = plt.figure(figsize=(20, 10))
-    plot6 = graph2 = sns.scatterplot(data=df, x="Metascore", y="GrossRevenue")
+    plot6 = sns.scatterplot(data=df, x="Metascore", y="GrossRevenue")
     plot6.axhline(np.mean(df["GrossRevenue"]), color="red")
     plot6.axvline(np.mean(df["Metascore"]), color="red")
     save_plot(plot6.figure, OUT_DIR, "Figure6.png")
