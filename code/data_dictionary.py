@@ -5,10 +5,11 @@ import os
 IN_PATH = os.path.join("data", "clean", "imdb_clean.csv")
 OUTPUT_PATH = os.path.join("data", "clean", "data_dictionary.csv")
 
-def make_data_dictionary(in_path):
+df = pd.read_csv(IN_PATH)
+
+def make_data_dictionary(dataFrame):
     '''Creates an initial data dictionary'''
         
-    df = pd.read_csv(in_path)
     cols = df.columns
     
     DataDict = {}
@@ -36,7 +37,14 @@ def give_data_description(df_data_dict, out_path):
        "Metascore of the movie assigned by movie critics (0 to 100)",
        "The number of votes cast by IMDB users for the movie",
        "Gross revenue of the movie in millions of dollars"
+        
+        
     ]
+    
+    dummy_cols = df.columns[10:]
+    
+    for col in dummy_cols:
+        definition_list.append(f"{col} genre dummy")
     
     
     df_data_dict.insert(0, "Definition", definition_list)
@@ -45,7 +53,7 @@ def give_data_description(df_data_dict, out_path):
     
 if __name__ == "__main__":
     
-    df_DataDict = make_data_dictionary(IN_PATH)
+    df_DataDict = make_data_dictionary(df)
     give_data_description(df_DataDict, OUTPUT_PATH)
     
 

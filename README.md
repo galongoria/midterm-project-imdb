@@ -58,4 +58,6 @@ Need to include here a summary of:
 	* [[TO BE CONTINUED]]
 
 4) Instructions to Produce Quantitative Analysis:
-	* [[TO BE CONTINUED]]
+	* Run `python3 code/quant_analysis.py` to perform a decade analysis of features and OLS regression of Gross Revenue on IMDB Rating, Metascore, and Release Year. 
+	 	* The decade analysis divides data into decades based on Release Year and generates a csv of summary statistics for all features except Release Year for each decade. The output is [decade_analysis.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/quantitative%20analysis/decade_analysis.csv)
+	 	* The OLS regression results are summarized into a csv. The output is [ols_regression.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/quantitative%20analysis/ols_regression.csv)
