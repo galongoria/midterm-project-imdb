@@ -18,180 +18,113 @@ def save_plot(figure_obj, output_directory, output_file_name):
 
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
-    df = pd.read_csv(IN_FILE_PATH)
+    df = pd.read_csv(IN_FILE_PATH).sort_values("GrossRevenue", ascending=False)[:1000]
 
-    # First Plot - top 50 movies ranked by gross revenue
+    # First Plot 
     plot1 = (
-        df.groupby("Title")["GrossRevenue"]
-        .mean()
-        .sort_values(ascending=False)[:50]
-        .plot.bar(figsize=(25, 8))
+    df.groupby("Title")["GrossRevenue"]
+    .mean()
+    .sort_values(ascending=False)[:50]
+    .plot.bar(figsize=(25, 8), title="Top 50 highest domestic grossing movies")
     )
+    plot1.set(xlabel="Title", ylabel="Domestic Gross Revenue (in Millions of $)")
     save_plot(plot1.figure, OUT_DIR, "Figure1.png")
 
-    # Second Plot - top 50 movies ranked by IMDB Rating
-    plot2 = (
-        df.groupby("Title")["IMDBRating"]
-        .mean()
-        .sort_values(ascending=False)[:50]
-        .plot.bar(figsize=(25, 8))
-    )
+    # Second Plot 
+    plot2 = plt.figure(figsize=(20, 10))
+    plot2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
+    plot2.axhline(np.mean(df["GrossRevenue"]), color="red")
+    plot2.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
+         title="Relation between release year and domestic revenue")
     save_plot(plot2.figure, OUT_DIR, "Figure2.png")
 
-    # Third Plot - - top 50 movies ranked by Metascore
-    plot3 = (
-        df.groupby("Title")["Metascore"]
-        .mean()
-        .sort_values(ascending=False)[:50]
-        .plot.bar(figsize=(25, 8))
-    )
+    # Third Plot 
+    plot3 = plt.figure(figsize=(20, 10))
+    plot3 = sns.scatterplot(data=df, x="Metascore", y="GrossRevenue")
+    plot3.axhline(np.mean(df["GrossRevenue"]), color="red")
+    plot3.axvline(np.mean(df["Metascore"]), color="red")
+    plot3.set(xlabel="Metascore", ylabel="Domestic Gross Revenue (in Millions of $)",
+         title="Relation between metascore and domestic revenue")
     save_plot(plot3.figure, OUT_DIR, "Figure3.png")
 
-    # Fourth Plot - scatterplot with all movies from dataset showing relation between revenue and IMDB Rating
+
+    # Fourth Plot
     plot4 = plt.figure(figsize=(20, 10))
     plot4 = sns.scatterplot(data=df, x="IMDBRating", y="GrossRevenue")
+    plot4.axhline(np.mean(df["GrossRevenue"]), color="red")
+    plot4.axvline(np.mean(df["IMDBRating"]), color="red")
+    plot4.set(xlabel="IMDB Rating", ylabel="Domestic Gross Revenue (in Millions of $)",
+         title="Relation between IMDB rating and domestic revenue")
     save_plot(plot4.figure, OUT_DIR, "Figure4.png")
 
-    # Fifth Plot - scatterplot with all movies showing relation between runtime and revenue, with mean lines to separate in quadrants
+    # Fifth Plot
     plot5 = plt.figure(figsize=(20, 10))
-    plot5 = sns.scatterplot(data=df, x="Runtime", y="GrossRevenue")
-    plot5.axhline(np.mean(df["GrossRevenue"]), color="red")
-    plot5.axvline(np.mean(df["Runtime"]), color="red")
+    plot5 = sns.scatterplot(data=df, x="IMDBRating", y="Metascore")
+    plot5.set(xlabel="IMDB Rating", ylabel="Metascore",
+         title="Relation between IMDB rating and metascore")
     save_plot(plot5.figure, OUT_DIR, "Figure5.png")
-
-    # Sixth Plot - scatterplot with all movies showing relation between Metascore and revenue, with mean lines to separate in quadrants
-    plot6 = plt.figure(figsize=(20, 10))
-    plot6 = graph2 = sns.scatterplot(data=df, x="Metascore", y="GrossRevenue")
-    plot6.axhline(np.mean(df["GrossRevenue"]), color="red")
-    plot6.axvline(np.mean(df["Metascore"]), color="red")
+    
+    # Sixth Code   
+    genre_props = (
+    df[['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime',
+       'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical',
+       'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western']]
+    .mean()
+    .reset_index()
+    .rename(columns = {"index": "Genre", 0: "Proportion"})
+    .sort_values("Proportion", ascending = False)
+    )
+    
+    # Plot
+    plot6 = plt.figure(figsize=(18,6))
+    plot6 = sns.barplot(data=genre_props,
+            x = "Proportion",
+            y = "Genre",
+           orient = "h",
+           palette = "Blues_r")
+    plot6.set(title="Percentage of Top 1000 US Grossing Movies by Genre")
     save_plot(plot6.figure, OUT_DIR, "Figure6.png")
-
-    # Seventh plot - average grossing per year, with confidence interval
-    plot7 = plt.figure(figsize=(15, 8))
-    plot7 = sns.lineplot(data=df, x="ReleaseYear", y="GrossRevenue")
+    
+    
+    # Seventh Plot   
+    plot7 = plt.figure(figsize=(20, 10))
+    plot7 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Action")
+    plot7.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
+         title="Relation between release year and domestic revenue with Action movies highlighted")
     save_plot(plot7.figure, OUT_DIR, "Figure7.png")
-
-    # Eighth plot - average runtime per year, with confidence interval
-    plot8 = plt.figure(figsize=(15, 8))
-    plot8 = sns.lineplot(data=df, x="ReleaseYear", y="Runtime")
+    
+    
+    # Eighth Plot   
+    plot8 = plt.figure(figsize=(20, 10))
+    plot8 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Adventure")
+    plot8.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
+         title="Relation between release year and domestic revenue with Adventure movies highlighted")
     save_plot(plot8.figure, OUT_DIR, "Figure8.png")
-
-    # Ninth plot - average runtime per classification, without confidence interval
-    plot9 = plt.figure(figsize=(15, 8))
-    plot9 = sns.lineplot(data=df, x="Certificate", y="Runtime", ci=False)
+    
+    # Ninth Plot
+    plot9 = (
+    df.groupby("Genres")["GrossRevenue"]
+    .mean()
+    .sort_values(ascending=False)[:50]
+    .plot.bar(figsize=(25, 8))
+    )
+    plot9.set(xlabel="Genre Combination", ylabel="Average Domestic Gross Revenue (in Millions of $)",
+         title="Relation between genres and average domestic revenue")
     save_plot(plot9.figure, OUT_DIR, "Figure9.png")
     
-    # Tenth plot - average grossing per classification, without confidence interval
-    plot10 = plt.figure(figsize=(15, 8))
-    plot10 = sns.lineplot(data=df, x="Certificate", y="GrossRevenue", ci=False)
+    
+    ## Extra Plots
+    # Tenth Plot
+    plot10 = plt.figure(figsize=(20, 10))
+    plot10 = sns.lineplot(data=df, x="ReleaseYear", y="Runtime")
     save_plot(plot10.figure, OUT_DIR, "Figure10.png")
     
-    # Eleventh plot - scatterplot with all movies showing relation between release year and revenue, with mean lines to separate in quadrants
+    # Eleventh Plot
     plot11 = plt.figure(figsize=(20, 10))
-    plot11 = graph2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
-    plot11.axhline(np.mean(df["GrossRevenue"]), color="red")
-    plot11.axvline(np.mean(df["ReleaseYear"]), color="red")
+    plot11 = sns.lineplot(data=df, x="IMDBRating", y="Runtime")
     save_plot(plot11.figure, OUT_DIR, "Figure11.png")
     
-    # created a group with all the genres dummies to refer to it easily in following graphs
-    genres = [
-    'Action',
-    'Adventure',
-    'Animation',
-    'Biography', 
-    'Comedy',
-    'Crime',
-    'Drama',
-    'Family', 
-    'Fantasy', 
-    'History', 
-    'Horror', 
-    'Music', 
-    'Musical',
-    'Mystery', 
-    'Romance', 
-    'Sci-Fi', 
-    'Sport', 
-    'Thriller', 
-    'War', 
-    'Western'
-    ]
-    
-    # Twelfth plot - bar plot with the number of movies released in each metascore with different columns for genres
-    plot12 = (
-    df.groupby("Metascore")[genres]
-    .sum()
-    .plot.bar(figsize=(25, 8))
-    )
+    # Twelfth Plot
+    plot12 = plt.figure(figsize=(20, 10))
+    plot12 = sns.lineplot(data=df, x="Metascore", y="Runtime")
     save_plot(plot12.figure, OUT_DIR, "Figure12.png")
-    
-    # Thirteenth plot - bar plot with the number of movies released each year with different columns for genres
-    plot13 = (
-    df.groupby("ReleaseYear")[genres]
-    .sum()
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot13.figure, OUT_DIR, "Figure13.png")
-    
-    # Fourteenth plot - same as 13, but with lines instead
-    plot14 = (
-    df.groupby("ReleaseYear")[genres]
-    .sum()
-    .sort_values("ReleaseYear", ascending=False)
-    .plot.line(figsize=(25, 8))
-    )
-    save_plot(plot14.figure, OUT_DIR, "Figure14.png")
-    
-    # Fifteenth plot - line plot with number of movies released in past 10 years with different lines by genres
-    plot15 = (
-    df.groupby("ReleaseYear")[genres]
-    .sum()
-    .sort_values("ReleaseYear", ascending=False)[:10]
-    .plot.line(figsize=(25, 8))
-    )
-    save_plot(plot15.figure, OUT_DIR, "Figure15.png")
-    
-    # Sixteenth plot - same as 15, but with bar plots instead - I think it looks better than in a line
-    plot16 = (
-    df.groupby("ReleaseYear")[genres]
-    .sum()
-    .sort_values("ReleaseYear", ascending=False)[:10]
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot16.figure, OUT_DIR, "Figure16.png")
-    
-    # Seventeenth plot - same as 16, but with the first 10 years of the dataset
-    plot17 = (
-    df.groupby("ReleaseYear")[genres]
-    .sum()
-    .sort_values("ReleaseYear", ascending=True)[:10]
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot17.figure, OUT_DIR, "Figure17.png")
-    
-    # Eighteenth plot - bar plot with number of movies by each genres that are in the top 30 Metascore ratings
-    plot18 = (
-    df.groupby("Metascore")[genres]
-    .sum()
-    .sort_values("Metascore", ascending=False)[:30]
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot18.figure, OUT_DIR, "Figure18.png")
-    
-    # Nineteenth plot - bar plot with number of movies by each genres that are in the lowest 30 Metascore ratings
-    plot19 = (
-    df.groupby("Metascore")[genres]
-    .sum()
-    .sort_values("Metascore", ascending=True)[:30]
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot19.figure, OUT_DIR, "Figure19.png")
-    
-    # Twentieth plot - bar plot with number of movies by each genres that are in the average Metascore ratings
-    plot20 = (
-    df.groupby("Metascore")[genres]
-    .sum()
-    .sort_values("Metascore", ascending=True)[30:70]
-    .plot.bar(figsize=(25, 8))
-    )
-    save_plot(plot20.figure, OUT_DIR, "Figure20.png")
