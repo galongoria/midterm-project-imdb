@@ -36,7 +36,7 @@ From the scraped data we needed to have more palatable data from processing and 
 As well we needed to create dummy variables for the differnet genres, so that each could be accessed when processing the data. To do this Austin created variables for each genre by separating the strings at the comma in between each genre listing. Then he concatenated the genres back into the data set. This basically allowed for categorical variables that were separated and easier to use in regressions and data analysis.
 
 ## Exploratory Data Analysis
-
+kdkkdd
 ## Modeling Analysis
 
 ## Conclusions
