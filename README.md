@@ -31,7 +31,7 @@ We note that one of the important limitations of our analysis is with our method
 
 ### Cleaning
 
-INSERT Description of cleaning procedure.
+
 
 ## Exploratory Data Analysis
 
