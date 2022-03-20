@@ -25,7 +25,7 @@ The features used in our analysis are summarized in the [Data Dictionary](https:
 
 ### Scraping
 
-INSERT Description of scraping procedure
+
 
 We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from imdb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
 
