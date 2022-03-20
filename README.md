@@ -37,6 +37,10 @@ As well we needed to create dummy variables for the differnet genres, so that ea
 
 ## Exploratory Data Analysis
 
+After scraping and cleaning the data we were finally able to manipulate and analyze the dataframe we had created. With Kashaf in charge of the analysis, she chose to use "pandas" as well as "statsmodel.api" for her analysis. First we thought it would be a good idea to look at the different summary statistics for each decade that movies were released in. This was done by creating a "Decade" variable that took every "ReleaseYear" and divided by 10 with no decimals then remultiplied by ten to normalize to each decade. Then we grouped all movies by the decade of their release, and proceeded to run summary statistics of the variables by each decade by the pandas function `.describe`.
+
+We found from our summary statistics that the average IMdb rating was at its highest during the 1960's. As well we found that ever since the 1960's IMdb ratings on average decade to decade have steadily decreased. Metascore ratings also see this trend as well decade to decade a steady drop in average ratings, but not starting in the 1960's but actually earlier. The problem though could be from the fewer amount of films produced in these earlier decades, as we see counts of movies on the rise decade by decade. If there were more movies rated from the 1930's-1960's there would be easier comparisions to be made through the decades, but this list isnt as comprehensive on the earlier decades. A possible extension of this analysis could be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
+
 ## Modeling Analysis
 
 ## Conclusions
