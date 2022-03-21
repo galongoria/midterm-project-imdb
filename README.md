@@ -20,7 +20,8 @@ Need to include here a quick summary of:
 The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
 * Methodology - 
 By scraping data from IMBD, we collected data points with features important to our analysis and have been validated by a high volume of user. We then cleaned the data by removing entries with missing data field. We then created dummie variables and conduct exploratry data analysis with Python. 
-* Findings - Through
+
+We found that movie genres and release years can exert pressure on movie ratings and revenue. 
 
 ## Data
 
@@ -68,7 +69,9 @@ The goal of our analysis is to find the fundemntal genre drivers of film ratings
 
 The focual point for the expansion of our current project should focuse on the use of additional data sets and estimation techniques to reduce the effect of cofounders on our analysis. 
 
-Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMdb user would help us calibrate the value of IMdb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMdb ratings.
+Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMdb user would help us calibrate the value of IMdb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMdb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which will help us control for the effect of genre on revneue.
+
+But our analysis could also benefit through the use of interaction variables. Specifically, we could investigate how different genre's interact with each other and how different genres interact with the release year variable.
 
 Finally, we had to eliminate entries due to missing data values. In further analysis, we could partition some of the data into a training set and train an alogrithm to automatically fill in some of the missing data values. This estimation will introduce more varience to our regression, but may be worthwhile for the data entries they were able to recover. As a finishing touch, we could use the number of peer movies, or how dense are the data around an entry, to give a confidence rating that vary on the different percentiles of the variable of interest.
 
