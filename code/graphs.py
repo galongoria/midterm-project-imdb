@@ -61,7 +61,6 @@ if __name__ == "__main__":
     # Relation between IMDB rating and metascore plot
     plot5 = plt.figure(figsize=(20, 10))
     plot5 = sns.scatterplot(data=df, x="IMDBRating", y="Metascore")
-    plot5 = sns.regplot(data=df, x="IMDBRating", y="Metascore")
     plot5.set(xlabel="IMDB Rating", ylabel="Metascore",
          title="Relation between IMDB rating and metascore")
     save_plot(plot5.figure, OUT_DIR, "Scatter_IMDB_by_metascore.png")
