@@ -59,8 +59,11 @@ The fourth OLS regression model shows effect of genres on revenue, which yields 
 
 ## Conclusions
 
-Need to include here a summary of:
-* Goal of analysis and conclusions
+
+* Goal of analysis and conclusions - 
+
+The goal of our analysis is to find the fundemntal genre drivers of film ratings and revenue. And we discovered that the genre of horror and comedey had the largest effect on ratings. On the other hand, adventure and sci-fi had the largest positive effect on reveune, while biography, horror and war had the largest negative effects. We can immediately sense that it is perhaps some aspects of the genre's production, rather than the mere presence of genre itself, that drives the difference in revenue. Adventure and sci-fi films, espically in recent years, are usually big budget productions that begin franchises and are heavily promoted with big stars. On the other hand, biographies and horror movies are know to be lower budget, indie productions. 
+
 * limitations of the project - 
 
 The focual point for the expansion of our current project should focuse on the use of additional data sets and estimation techniques to reduce the effect of cofounders on our analysis. 
