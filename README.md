@@ -9,7 +9,8 @@ Team Members:
 * [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing, Presentation
 * [Arpan Chatterji](https://github.com/achatterji1) - Quantitative Analysis
 * [Kashaf Oneeb](https://github.com/koneeb) - Quantitative Analysis, Data Dictionary, Report Writing
-* [Jack Hill](https://github.com/ts1989mu) -  Report Writing, Vetting
+* [Jack Hill](https://github.com/ts1989mu) -  Figure Production, Report Writing, Vetting
+
 Due: 3/22/2022 
 
 ## Introduction
@@ -18,7 +19,7 @@ Need to include here a quick summary of:
 * Goal of analysis
 The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
 * Methodology
-By scraping data from IMBD, we collected data points with features important to our analysis and have bee validated by a high volume of user.
+By scraping data from IMBD, we collected data points with features important to our analysis and have bee validated by a high volume of user. We then cleaned the data by removing entries with missing data field. We then created dummie variables and conduct exploratry data data analsysi with python 
 * Findings
 
 ## Data
