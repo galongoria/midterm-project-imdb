@@ -1,4 +1,4 @@
-# midterm-project-imbd
+# midterm-project-imdb
 
 Team Good-2-Great Midterm Project for Python, Data, and Databases
 
