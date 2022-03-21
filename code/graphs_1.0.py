@@ -28,11 +28,13 @@ if __name__ == "__main__":
     .plot.bar(figsize=(25, 8), title="Top 50 highest domestic grossing movies")
     )
     plot1.set(xlabel="Title", ylabel="Domestic Gross Revenue (in Millions of $)")
+    plot1.set_ylim([300, 1000])
     save_plot(plot1.figure, OUT_DIR, "Figure1.png")
 
     # Second Plot 
     plot2 = plt.figure(figsize=(20, 10))
     plot2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
+    plot2 = sns.regplot(data=df, x="ReleaseYear", y="GrossRevenue", order=3)
     plot2.axhline(np.mean(df["GrossRevenue"]), color="red")
     plot2.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue")
@@ -60,6 +62,7 @@ if __name__ == "__main__":
     # Fifth Plot
     plot5 = plt.figure(figsize=(20, 10))
     plot5 = sns.scatterplot(data=df, x="IMDBRating", y="Metascore")
+    plot5 = sns.regplot(data=df, x="IMDBRating", y="Metascore")
     plot5.set(xlabel="IMDB Rating", ylabel="Metascore",
          title="Relation between IMDB rating and metascore")
     save_plot(plot5.figure, OUT_DIR, "Figure5.png")
@@ -88,7 +91,9 @@ if __name__ == "__main__":
     
     # Seventh Plot   
     plot7 = plt.figure(figsize=(20, 10))
+    plot7 = sns.regplot(data=df, x="ReleaseYear", y="GrossRevenue", order =2)
     plot7 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Action")
+
     plot7.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue with Action movies highlighted")
     save_plot(plot7.figure, OUT_DIR, "Figure7.png")
@@ -96,6 +101,7 @@ if __name__ == "__main__":
     
     # Eighth Plot   
     plot8 = plt.figure(figsize=(20, 10))
+    plot8 = sns.regplot(data=df, x="ReleaseYear", y="GrossRevenue", order = 2)
     plot8 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Adventure")
     plot8.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue with Adventure movies highlighted")
@@ -110,6 +116,7 @@ if __name__ == "__main__":
     )
     plot9.set(xlabel="Genre Combination", ylabel="Average Domestic Gross Revenue (in Millions of $)",
          title="Relation between genres and average domestic revenue")
+    plot9.set_ylim([100, 500])
     save_plot(plot9.figure, OUT_DIR, "Figure9.png")
     
     
