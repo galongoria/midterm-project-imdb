@@ -16,7 +16,9 @@ Due: 3/22/2022
 
 Need to include here a quick summary of:
 * Goal of analysis
+The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. 
 * Methodology
+By scraping data from IMBD, we collected data points with features important to our analysis and have bee validated by a high volume of user.
 * Findings
 
 ## Data
@@ -27,7 +29,12 @@ The features used in our analysis are summarized in the [Data Dictionary](https:
 
 When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMdb. Elliot scraped the data from IMdb using "Beautiful Soup" and "requests" as his python packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMdb website we set our schema as title, release year, certificates (rating), run time, genres, IMdb rating, Metascore rating, # of votes for IMdb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this could become an issue and decided to fix this problem when cleaning the data.
 
-We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from imdb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
+We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from imdb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. However, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
+
+Another limitation of our data is that IMdb ratings and to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our study, it is unclear to us whether IMdb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMdb rating may reflect whether the demographics for a certain movie is more prone to be IMdb users (and therefore more likely to leave a rating).
+
+Lastly, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. An additional route of analysis would be to control for inflation and combine another dataset for marketing spendings.  
+
 
 ### Cleaning
 
