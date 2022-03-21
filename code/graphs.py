@@ -20,7 +20,7 @@ if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     df = pd.read_csv(IN_FILE_PATH).sort_values("GrossRevenue", ascending=False)[:1000]
 
-    # First Plot 
+    # Top 50 highest domestic grossing movies plot 
     plot1 = (
     df.groupby("Title")["GrossRevenue"]
     .mean()
@@ -28,43 +28,45 @@ if __name__ == "__main__":
     .plot.bar(figsize=(25, 8), title="Top 50 highest domestic grossing movies")
     )
     plot1.set(xlabel="Title", ylabel="Domestic Gross Revenue (in Millions of $)")
-    save_plot(plot1.figure, OUT_DIR, "Figure1.png")
+    plot1.set_ylim([300, 1000])
+    save_plot(plot1.figure, OUT_DIR, "Top_50_Grossing.png")
 
-    # Second Plot 
+    # Relation between release year and domestic revenue plot 
     plot2 = plt.figure(figsize=(20, 10))
     plot2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
-    plot2.axhline(np.mean(df["GrossRevenue"]), color="red")
+    plot2 = sns.regplot(data=df, x="ReleaseYear", y="GrossRevenue", order=3)
     plot2.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue")
-    save_plot(plot2.figure, OUT_DIR, "Figure2.png")
+    save_plot(plot2.figure, OUT_DIR, "Release_Year_by_Grossing.png")
 
-    # Third Plot 
+    # Relation between metascore and domestic revenue plot 
     plot3 = plt.figure(figsize=(20, 10))
     plot3 = sns.scatterplot(data=df, x="Metascore", y="GrossRevenue")
     plot3.axhline(np.mean(df["GrossRevenue"]), color="red")
     plot3.axvline(np.mean(df["Metascore"]), color="red")
     plot3.set(xlabel="Metascore", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between metascore and domestic revenue")
-    save_plot(plot3.figure, OUT_DIR, "Figure3.png")
+    save_plot(plot3.figure, OUT_DIR, "Metascore_by_Grossing.png")
 
 
-    # Fourth Plot
+    # Relation between IMDB rating and domestic revenue plot
     plot4 = plt.figure(figsize=(20, 10))
     plot4 = sns.scatterplot(data=df, x="IMDBRating", y="GrossRevenue")
     plot4.axhline(np.mean(df["GrossRevenue"]), color="red")
     plot4.axvline(np.mean(df["IMDBRating"]), color="red")
     plot4.set(xlabel="IMDB Rating", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between IMDB rating and domestic revenue")
-    save_plot(plot4.figure, OUT_DIR, "Figure4.png")
+    save_plot(plot4.figure, OUT_DIR, "IMDBRating_by_Grossing.png")
 
-    # Fifth Plot
+    # Relation between IMDB rating and metascore plot
     plot5 = plt.figure(figsize=(20, 10))
     plot5 = sns.scatterplot(data=df, x="IMDBRating", y="Metascore")
+    plot5 = sns.regplot(data=df, x="IMDBRating", y="Metascore")
     plot5.set(xlabel="IMDB Rating", ylabel="Metascore",
          title="Relation between IMDB rating and metascore")
-    save_plot(plot5.figure, OUT_DIR, "Figure5.png")
+    save_plot(plot5.figure, OUT_DIR, "Scatter_IMDB_by_metascore.png")
     
-    # Sixth Code   
+    # Code for probability distribution graph   
     genre_props = (
     df[['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime',
        'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical',
@@ -75,7 +77,7 @@ if __name__ == "__main__":
     .sort_values("Proportion", ascending = False)
     )
     
-    # Plot
+    # Plot of percentage of Top 1000 US Grossing Movies by Genre
     plot6 = plt.figure(figsize=(18,6))
     plot6 = sns.barplot(data=genre_props,
             x = "Proportion",
@@ -83,25 +85,25 @@ if __name__ == "__main__":
            orient = "h",
            palette = "Blues_r")
     plot6.set(title="Percentage of Top 1000 US Grossing Movies by Genre")
-    save_plot(plot6.figure, OUT_DIR, "Figure6.png")
+    save_plot(plot6.figure, OUT_DIR, "Percentage_of_movies_genre.png")
     
     
-    # Seventh Plot   
+    # Plot of relation between release year and domestic revenue with Action movies highlighted
     plot7 = plt.figure(figsize=(20, 10))
     plot7 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Action")
     plot7.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue with Action movies highlighted")
-    save_plot(plot7.figure, OUT_DIR, "Figure7.png")
+    save_plot(plot7.figure, OUT_DIR, "Release_year_by_grossing_action.png")
     
     
-    # Eighth Plot   
+    # Plot of relation between release year and domestic revenue with Adventure movies highlighted
     plot8 = plt.figure(figsize=(20, 10))
     plot8 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue", hue="Adventure")
     plot8.set(xlabel="Release Year", ylabel="Domestic Gross Revenue (in Millions of $)",
          title="Relation between release year and domestic revenue with Adventure movies highlighted")
-    save_plot(plot8.figure, OUT_DIR, "Figure8.png")
+    save_plot(plot8.figure, OUT_DIR, "Release_year_by_grossing_adventure.png")
     
-    # Ninth Plot
+    # Plot of relation between genres and average domestic revenue
     plot9 = (
     df.groupby("Genres")["GrossRevenue"]
     .mean()
@@ -110,21 +112,5 @@ if __name__ == "__main__":
     )
     plot9.set(xlabel="Genre Combination", ylabel="Average Domestic Gross Revenue (in Millions of $)",
          title="Relation between genres and average domestic revenue")
-    save_plot(plot9.figure, OUT_DIR, "Figure9.png")
-    
-    
-    ## Extra Plots
-    # Tenth Plot
-    plot10 = plt.figure(figsize=(20, 10))
-    plot10 = sns.lineplot(data=df, x="ReleaseYear", y="Runtime")
-    save_plot(plot10.figure, OUT_DIR, "Figure10.png")
-    
-    # Eleventh Plot
-    plot11 = plt.figure(figsize=(20, 10))
-    plot11 = sns.lineplot(data=df, x="IMDBRating", y="Runtime")
-    save_plot(plot11.figure, OUT_DIR, "Figure11.png")
-    
-    # Twelfth Plot
-    plot12 = plt.figure(figsize=(20, 10))
-    plot12 = sns.lineplot(data=df, x="Metascore", y="Runtime")
-    save_plot(plot12.figure, OUT_DIR, "Figure12.png")
+    plot9.set_ylim([100, 500])
+    save_plot(plot9.figure, OUT_DIR, "Grossing_by_genre_group.png")
