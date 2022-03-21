@@ -3,3 +3,10 @@ requests
 bs4
 nb_black
 black
+
+# From Pedro's Plotting Files
+matplotlib
+seaborn
+
+# From Kashaf's quant analysis files
+statsmodels
