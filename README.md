@@ -65,7 +65,7 @@ Need to include here a summary of:
 
 3) Instructions to Produce Figures:
 	* Run `python3 code/graphs.py` to produce the charts used in the analysis, it will create nine charts showing the relation between or variables of interest.  
-		*The figures will be created and saved in folder [figures](https://github.com/ElliottMetzler/midterm-project-imdb/tree/main/figures)
+	 	* The figures will be created and saved in folder [figures](https://github.com/ElliottMetzler/midterm-project-imdb/tree/main/figures)
 
 4) Instructions to Produce Quantitative Analysis:
 	* Run `python3 code/quant_analysis.py` to perform a decade analysis of features and OLS regression of Gross Revenue on IMDB Rating, Metascore, and Release Year. 
