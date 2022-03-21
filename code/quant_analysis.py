@@ -1,11 +1,11 @@
 import pandas as pd
 import os
 import statsmodels.api as sm
+from stargazer.stargazer import Stargazer
 
 IN_PATH = os.path.join("data", "clean", "imdb_clean.csv")
 OUTPUT_DIR = "quantitative analysis"
-REVENUE_IMDB_OLS_PATH = os.path.join(OUTPUT_DIR, "revenue_imdb_ols_regression.csv")
-REVENUE_META_OLS_PATH = os.path.join(OUTPUT_DIR, "revenue_meta_ols_regression.csv")
+REVENUE_OLS_PATH = os.path.join(OUTPUT_DIR, "revenue_ols_regression.csv")
 IMDB_OLS_PATH = os.path.join(OUTPUT_DIR, "imdb_ols_regression.csv")
 METASCORE_OLS_PATH = os.path.join(OUTPUT_DIR, "metascore_ols_regression.csv")
 SUMMARY_PATH = os.path.join(OUTPUT_DIR, "decade_analysis.csv")
@@ -26,67 +26,53 @@ def decade_summary(out_path):
     )
 
 
-def revenue_imdb_ols_regression(out_path):
-    '''Perform OLS regression of movie Revenue on IMBD Rating, Release Year, and genre dummies and create csv'''
+def revenue_ols_regression(out_path):
+    '''Perform two OLS regressions of movie Revenue. First on IMBD Rating, Release Year, and genre dummies and then on
+    Metascore, Release Year, and genre dummies create csv'''
     
-    x_cols = ["IMDBRating", "ReleaseYear"]
+    x_cols1 = ["IMDBRating", "ReleaseYear"]
     for col in dummy_cols:
-        x_cols.append(col)
-
-    x = df[x_cols]
-    y = df["GrossRevenue"]
-    model = sm.OLS(y, sm.add_constant(x))
-    model_fit = model.fit()
-    model_fit_summary = model_fit.summary()
-
-    model_as_html = model_fit_summary.tables[1].as_html()
-    pd.read_html(model_as_html, header=0, index_col=0)[0].to_csv(out_path)
+        x_cols1.append(col)
     
-def revenue_meta_ols_regression(out_path):
-    '''Perform OLS regression of movie Revenue on Metascore, Release Year, and genre dummies and create csv'''
-    
-    x_cols = ["Metascore", "ReleaseYear"]
+    x_cols2 = ["Metascore", "ReleaseYear"]
     for col in dummy_cols:
-        x_cols.append(col)
-
-    x = df[x_cols]
+        x_cols2.append(col)
+        
+    x1 = df[x_cols1]
+    x2 = df[x_cols2]
     y = df["GrossRevenue"]
-    model = sm.OLS(y, sm.add_constant(x))
-    model_fit = model.fit()
-    model_fit_summary = model_fit.summary()
-
-    model_as_html = model_fit_summary.tables[1].as_html()
-    pd.read_html(model_as_html, header=0, index_col=0)[0].to_csv(out_path)
-
+    
+    model1 = sm.OLS(y, sm.add_constant(x1)).fit()
+    model2 = sm.OLS(y, sm.add_constant(x2)).fit()
+    
+    stargazer = Stargazer([model1, model2])
+    open(out_path, 'w').write(stargazer.render_latex())
+    
 def imdb_ols_regression(out_path):
     '''Perform OLS regression of IMBD Rating on genre dummies and create csv'''
     
     x = df[dummy_cols]
     y = df["IMDBRating"]
-    model = sm.OLS(y, sm.add_constant(x))
-    model_fit = model.fit()
-    model_fit_summary = model_fit.summary()
+    
+    model = sm.OLS(y, sm.add_constant(x)).fit()
 
-    model_as_html = model_fit_summary.tables[1].as_html()
-    pd.read_html(model_as_html, header=0, index_col=0)[0].to_csv(out_path)
+    stargazer = Stargazer([model])
+    open(out_path, 'w').write(stargazer.render_latex())
     
 def metascore_ols_regression(out_path):
     '''Perform OLS regression of Metascore on genre dummies and create csv'''
     
     x = df[dummy_cols]
     y = df["Metascore"]
-    model = sm.OLS(y, sm.add_constant(x))
-    model_fit = model.fit()
-    model_fit_summary = model_fit.summary()
+    
+    model = sm.OLS(y, sm.add_constant(x)).fit()
 
-    model_as_html = model_fit_summary.tables[1].as_html()
-    pd.read_html(model_as_html, header=0, index_col=0)[0].to_csv(out_path)
-
+    stargazer = Stargazer([model])
+    open(out_path, 'w').write(stargazer.render_latex())
 
 if __name__ == "__main__":
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     decade_summary(SUMMARY_PATH)
-    revenue_imdb_ols_regression(REVENUE_IMDB_OLS_PATH)
-    revenue_meta_ols_regression(REVENUE_META_OLS_PATH)
+    revenue_ols_regression(REVENUE_OLS_PATH)
     imdb_ols_regression(IMDB_OLS_PATH)
     metascore_ols_regression(METASCORE_OLS_PATH)
