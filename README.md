@@ -16,7 +16,7 @@ Due: 3/22/2022
 
 Need to include here a quick summary of:
 * Goal of analysis
-The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. 
+The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
 * Methodology
 By scraping data from IMBD, we collected data points with features important to our analysis and have bee validated by a high volume of user.
 * Findings
