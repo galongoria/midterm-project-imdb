@@ -16,11 +16,11 @@ Due: 3/22/2022
 ## Introduction
 
 Need to include here a quick summary of:
-* Goal of analysis
+* Goal of analysis -
 The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
-* Methodology
+* Methodology - 
 By scraping data from IMBD, we collected data points with features important to our analysis and have been validated by a high volume of user. We then cleaned the data by removing entries with missing data field. We then created dummie variables and conduct exploratry data analysis with Python. 
-* Findings
+* Findings - Through
 
 ## Data
 
@@ -62,7 +62,8 @@ The fourth OLS regression model shows effect of genres on revenue, which yields 
 Need to include here a summary of:
 * Goal of analysis and conclusions
 * limitations of the project
-* Areas where we would have improved or expanded the project if we had more time
+The focual point for the expansion of our current project should focuse on the use of additional data sets and estimation techniques to reduce the effect of cofounders on our analysis. 
+Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMdb user would help us calibrate the value of IMdb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures.
 
 ## Instructions to Reproduce Analysis:
 
