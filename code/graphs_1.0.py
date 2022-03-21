@@ -29,6 +29,7 @@ if __name__ == "__main__":
     )
     plot1.set(xlabel="Title", ylabel="Domestic Gross Revenue (in Millions of $)")
     save_plot(plot1.figure, OUT_DIR, "Figure1.png")
+    plot1.ylim([200, 1000])
 
     # Second Plot 
     plot2 = plt.figure(figsize=(20, 10))
