@@ -19,6 +19,7 @@ def save_plot(figure_obj, output_directory, output_file_name):
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     df = pd.read_csv(IN_FILE_PATH).sort_values("GrossRevenue", ascending=False)[:1000]
+    df2 = pd.read_csv(IN_FILE_PATH)
 
     # Top 50 highest domestic grossing movies plot 
     plot1 = (
@@ -113,3 +114,13 @@ if __name__ == "__main__":
          title="Relation between genres and average domestic revenue")
     plot9.set_ylim([100, 500])
     save_plot(plot9.figure, OUT_DIR, "Grossing_by_genre_group.png")
+    
+    # Quantity of movies per decade
+    counts_by_year_data = df2.groupby(df2["ReleaseYear"]//10*10)["Title"].count().reset_index()
+    plot10 = (
+    counts_by_year_data.groupby("ReleaseYear")["Title"]
+    .mean()
+    .plot.bar(figsize=(8, 8), title="Number of movies released per decade")
+    )
+    plot10.set(xlabel="Release Decade", ylabel="Number of movies released")
+    save_plot(plot10.figure, OUT_DIR, "Movies_per_decade.png")
