@@ -61,9 +61,13 @@ The fourth OLS regression model shows effect of genres on revenue, which yields 
 
 Need to include here a summary of:
 * Goal of analysis and conclusions
-* limitations of the project
+* limitations of the project - 
+
 The focual point for the expansion of our current project should focuse on the use of additional data sets and estimation techniques to reduce the effect of cofounders on our analysis. 
-Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMdb user would help us calibrate the value of IMdb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures.
+
+Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMdb user would help us calibrate the value of IMdb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMdb ratings.
+
+Finally, we had to eliminate entries due to missing data values. In further analysis, we could partition some of the data into a training set and train an alogrithm to automatically fill in some of the missing data values. This estimation will introduce more varience to our regression, but may be worthwhile for the data entries they were able to recover. As a finishing touch, we could use the number of peer movies, or how dense are the data around an entry, to give a confidence rating that vary on the different percentiles of the variable of interest.
 
 ## Instructions to Reproduce Analysis:
 
