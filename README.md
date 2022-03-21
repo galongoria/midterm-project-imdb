@@ -56,7 +56,7 @@ Need to include here a summary of:
 ## Instructions to Reproduce Analysis:
 
 1) Set-up Instructions:
-	* Run `pip install -r requirements.txt`
+	* Run `pip install -r requirements.txt` in terminal
 
 2) Data Scrape and Clean Instructions:
 	* Run `python3 code/imdb_scraper.py` to scrape the data from the imdb website. This script will navigate to the imdb pages and scrape the data, generating a csv file of raw data in the raw data folder. The output is `data/raw/imdb_scraped.csv`
