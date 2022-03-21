@@ -5,9 +5,9 @@ from stargazer.stargazer import Stargazer
 
 IN_PATH = os.path.join("data", "clean", "imdb_clean.csv")
 OUTPUT_DIR = "quantitative analysis"
-REVENUE_OLS_PATH = os.path.join(OUTPUT_DIR, "revenue_ols_regression.md")
-IMDB_OLS_PATH = os.path.join(OUTPUT_DIR, "imdb_ols_regression.md")
-METASCORE_OLS_PATH = os.path.join(OUTPUT_DIR, "metascore_ols_regression.md")
+REVENUE_OLS_PATH = os.path.join(OUTPUT_DIR, "revenue_ols_regression.tex")
+IMDB_OLS_PATH = os.path.join(OUTPUT_DIR, "imdb_ols_regression.tex")
+METASCORE_OLS_PATH = os.path.join(OUTPUT_DIR, "metascore_ols_regression.tex")
 SUMMARY_PATH = os.path.join(OUTPUT_DIR, "decade_analysis.csv")
 
 df = pd.read_csv(IN_PATH)
