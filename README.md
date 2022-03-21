@@ -9,7 +9,7 @@ Team Members:
 * [Austin Longoria](https://github.com/galongoria) - Data Cleaning, Report Writing, Presentation
 * [Arpan Chatterji](https://github.com/achatterji1) - Quantitative Analysis
 * [Kashaf Oneeb](https://github.com/koneeb) - Quantitative Analysis, Data Dictionary, Report Writing
-
+* [Jack Hill](https://github.com/ts1989mu) - Figure Production, Report Writing, Vetting
 Due: 3/22/2022 
 
 ## Introduction
