@@ -44,7 +44,7 @@ As well we needed to create dummy variables for the differnet genres, so that ea
 
 ## Exploratory Data Analysis
 
-After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. 
+After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. Our most notable results and charts are reported here, while underlying statistical output can be found under [decade_analysis.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/decade_analysis.csv) and additional figures can be found in the [figures](https://github.com/ElliottMetzler/midterm-project-imdb/tree/main/figures) sub-directory.
 
 ### Decades Analysis
 
@@ -71,6 +71,8 @@ We also wanted to visually assess the relationship between the rating (IMDb and 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Metascore_by_Grossing.png)
 
 As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money also were well received movies. 
+
+
 
 ## Modeling Analysis
 
