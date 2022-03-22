@@ -44,9 +44,9 @@ As well we needed to create dummy variables for the differnet genres, so that ea
 
 ## Exploratory Data Analysis
 
-### Decades Analysis
-
 After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. 
+
+### Decades Analysis
 
 First, we analyzed summary statistics on the movies for each decade for which we had data. We found that the highest average IMDb rating across decades appeared in the 1960's. Of course, as noted above, we recognize the likely selection bias in this statistic. As shown in the figure below, there are very few movies that made it into our sample from this decade.
 
@@ -60,7 +60,16 @@ Since we were most interested in better understanding various genres impact on m
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Percentage_of_movies_genre.png)
 
-As shown by the figure, 
+As shown by the figure, in our sample of the highest grossing movies on IMDb, they tent to be Adventure, Action, Comedy, and Drama movies.
+
+### Rating vs. Grossing Analysis
+
+We also wanted to visually assess the relationship between the rating (IMDb and Metascore) and movie gross income. We figured that this would help us see if we had a strong correlation between the movie being "good" and making lots of money. We display the results first of IMDb on gross then of Metascore on gross.
+
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/IMDBRating_by_Grossing.png)
+
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Metascore_by_Grossing.png)
+
 
 
 ## Modeling Analysis
