@@ -63,7 +63,7 @@ Since we were most interested in better understanding various genres impact on m
 
 As shown by the figure, in our sample of the highest grossing movies on IMDb, they tent to be Adventure, Action, Comedy, and Drama movies.
 
-### Rating vs. Grossing Analysis
+### Rating and Grossing Analysis
 
 We also wanted to visually assess the relationship between the rating (IMDb and Metascore) and movie gross income. We figured that this would help us see if we had a strong correlation between the movie being "good" and making lots of money. We display the results first of IMDb on gross then of Metascore on gross.
 
@@ -73,16 +73,23 @@ We also wanted to visually assess the relationship between the rating (IMDb and 
 
 As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money also were well received movies. 
 
+Finally, we assessed the relationship between IMDb score and Metascore to see how strong the correlation between this two variables was.
 
-## Modeling Analysis
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Scatter_IMDB_by_metascore.png)
 
-From the cleaned data, five models were created using the “statsmodels" package. These include 1 summary statistic model and 4 regression models.
+As expected, we find a strong correlation between these two scoring metrics.
 
-For the first model, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This model shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century. As a result, more attention is given to recent films.
 
-The second and third OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated.
+<!-- ## FIT THIS SOMEWHERE
+For the first model, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This model shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century. As a result, more attention is given to recent films. -->
 
-The final OLS regression model shows effect of revenue on IMDb score, Metascore, and genres. Since we assume that IMDb score and Metascore are correlated, they have been put in separate regressions. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model.
+## Quantitative Analysis
+
+From the cleaned data, we analyzed four regression models using the `statsmodels` package.
+
+The first two OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated.
+
+The second two OLS regression models show the effect of IMDb score or Metascore and genres on gross revenue. Since we notice the strong correlation between IMDb score and Metascore, they have been put in separate regressions. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model.
 
 ## Conclusions
 
