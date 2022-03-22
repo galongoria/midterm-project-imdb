@@ -102,19 +102,17 @@ The second two OLS regression models show the effect of IMDb score or Metascore 
 
 ## Conclusions
 
-The goal of our analysis is to find the fundemntal genre drivers of film ratings and revenue. We discovered that the genre of horror and comedey had the largest effect on ratings. On the other hand, adventure and sci-fi had the largest positive effect on reveune, while biography, horror and war had the largest negative effects. We can immediately sense that it is perhaps some aspects of the genre's production, rather than the mere presence of genre itself, that drives the difference in revenue. Adventure and sci-fi films, espically in recent years, are usually big budget productions that begin franchises and are heavily promoted with big stars. On the other hand, biographies and horror movies are know to be lower budget, indie productions. 
+In our analysis, we were able to review and analyze how different genres impact ratings and revenue for movies in our sample. We found that genres the Animation and Musical have the largest positive impact on IMDb ratings and Metascore ratings, while the genres Comedy and Horror had the largest negative impact on ratings. Additionally, we found that when estimating revenue, IMDb rating and genres like Adventure and Fantasy had a positive impact, while genres like Biography and War had a significant negative impact. We found similar results in our regression predicting revenue using Metascore.
 
-The focal point for the expansion of our current project should focus on the use of additional data sets and estimation techniques to reduce the effect of confounders on our analysis. 
+An expansion of our current project would likely focus on the use of additional data sets and estimation techniques to reduce the effect of confounders on our analysis.
 
-Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMDb user would help us calibrate the value of IMDb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMDb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which will help us control for the effect of genre on revneue.
-
-But our analysis could also benefit through the use of interaction variables. Specifically, we could investigate how different genre's interact with each other and how different genres interact with the release year variable.
+Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMDb user would help us calibrate the value of IMDb ratings. Additionally, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMDb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which could help us control for the effect of genre on revneue. Our analysis could also benefit through the use of interaction variables. Specifically, we could investigate how different genre's interact with each other and how different genres interact with the release year variable.
 
 Finally, we had to eliminate entries due to missing data values. In further analysis, we could partition some of the data into a training set and train an alogrithm to automatically fill in some of the missing data values. This estimation will introduce more varience to our regression, but may be worthwhile for the data entries they were able to recover. As a finishing touch, we could use the number of peer movies, or how dense are the data around an entry, to give a confidence rating that vary on the different percentiles of the variable of interest.
 
 ## Instructions to Reproduce Analysis:
 
-NOTE: These reproduction instructions expect that the user is running everything through Vertex AI. All instructions run through terminal.
+__NOTE__: These reproduction instructions expect that the user is running everything through Vertex AI on Google Cloud Platform. All instructions run through terminal.
 
 1) Set-up Instructions:
 	* Run `pip install -r requirements.txt`
