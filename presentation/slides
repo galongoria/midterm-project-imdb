@@ -34,9 +34,10 @@
         \item Scraped over 1,700 observations from movies by genre
         \item Excluded observations with incomplete fields
     \end{itemize}
-    \begin{textblock*}{1cm}(9.2cm,5cm) % {block width} (coords)
-    \includegraphics[width=3cm]{imdb_by_genre.png}
-    \end{textblock*}
+    \begin{figure}
+        \centering
+        \includegraphics[width=4cm]{presentation/imdb_by_genre.png}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Data Cleaning}
