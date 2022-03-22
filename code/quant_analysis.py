@@ -28,9 +28,9 @@ def decade_summary(out_path):
 
 
 def revenue_imdb_ols_regression(out_path):
-    '''Perform OLS regression of movie Revenue on IMBD Rating, Release Year, and genre dummies and create csv'''
+    '''Perform OLS regression of movie Revenue on IMBD Rating and genre dummies, and create png'''
     
-    x_cols = ["IMDBRating", "ReleaseYear"]
+    x_cols = ["IMDBRating"]
     for col in dummy_cols:
         x_cols.append(col)
 
@@ -50,9 +50,9 @@ def revenue_imdb_ols_regression(out_path):
     
     
 def revenue_meta_ols_regression(out_path):
-    '''Perform OLS regression of movie Revenue on Metascore, Release Year, and genre dummies and create csv'''
+    '''Perform OLS regression of movie Revenue on Metascore and genre dummies, and create png'''
     
-    x_cols = ["Metascore", "ReleaseYear"]
+    x_cols = ["Metascore"]
     for col in dummy_cols:
         x_cols.append(col)
 
@@ -71,7 +71,7 @@ def revenue_meta_ols_regression(out_path):
     fig1.savefig(out_path)
     
 def imdb_ols_regression(out_path):
-    '''Perform OLS regression of IMBD Rating on genre dummies and create csv'''
+    '''Perform OLS regression of IMBD Rating on genre dummies and create png'''
     
     x = df[dummy_cols]
     y = df["IMDBRating"]
@@ -88,7 +88,7 @@ def imdb_ols_regression(out_path):
     fig2.savefig(out_path)
     
 def metascore_ols_regression(out_path):
-    '''Perform OLS regression of Metascore on genre dummies and create csv'''
+    '''Perform OLS regression of Metascore on genre dummies and create png'''
     
     x = df[dummy_cols]
     y = df["Metascore"]
