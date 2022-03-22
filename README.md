@@ -44,6 +44,8 @@ As well we needed to create dummy variables for the differnet genres, so that ea
 
 ## Exploratory Data Analysis
 
+### Decades Analysis
+
 After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. 
 
 First, we analyzed summary statistics on the movies for each decade for which we had data. We found that the highest average IMDb rating across decades appeared in the 1960's. Of course, as noted above, we recognize the likely selection bias in this statistic. As shown in the figure below, there are very few movies that made it into our sample from this decade.
@@ -52,10 +54,13 @@ First, we analyzed summary statistics on the movies for each decade for which we
 
 We also found that since the 1960's, the IMDb ratings on average by decade have steadily declined. We see a similar trend in Metascore ratings, though the Metascore ratings decline starts earlier. As mentioned above, a good extension of this analysis would be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
 
-Since we were most interested in better understanding various genres impact on movie performance by either rating or income metrics, we also explored this in our first review of the data. In the next figure, we show the top 50 grossing movies.
+### Genres Analysis
 
-![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Top_50_Grossing.png)
+Since we were most interested in better understanding various genres impact on movie performance by either rating or income metrics, we also explored this in our first review of the data. In the next figure, we display the share of movies in our sample that list each possible genre on their IMDb page.
 
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Percentage_of_movies_genre.png)
+
+As shown by the figure, 
 
 
 ## Modeling Analysis
