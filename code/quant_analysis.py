@@ -41,11 +41,12 @@ def revenue_imdb_ols_regression(out_path):
     model_summary = model.summary()
     
     
-    plt.rc("figure", figsize=(12, 7))
-    plt.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
-    plt.axis("off")
+    fig, ax = plt.subplots(figsize=(12, 7))
+    
+    ax.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
+    ax.axis("off")
     plt.tight_layout()
-    plt.savefig(out_path)
+    fig.savefig(out_path)
     
     
 def revenue_meta_ols_regression(out_path):
@@ -62,11 +63,12 @@ def revenue_meta_ols_regression(out_path):
     model_summary = model.summary()
     
     
-    plt.rc("figure", figsize=(12, 7))
-    plt.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
-    plt.axis("off")
+    fig1, ax1 = plt.subplots(figsize=(12, 7))
+    
+    ax1.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
+    ax1.axis("off")
     plt.tight_layout()
-    plt.savefig(out_path)
+    fig1.savefig(out_path)
     
 def imdb_ols_regression(out_path):
     '''Perform OLS regression of IMBD Rating on genre dummies and create csv'''
@@ -78,12 +80,12 @@ def imdb_ols_regression(out_path):
     model_summary = model.summary()
     
     
-    plt.rc("figure", figsize=(12, 7))
-    plt.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
-    plt.axis("off")
-    plt.tight_layout()
-    plt.savefig(out_path)
+    fig2, ax2 = plt.subplots(figsize=(12, 7))
     
+    ax2.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
+    ax2.axis("off")
+    plt.tight_layout()
+    fig2.savefig(out_path)
     
 def metascore_ols_regression(out_path):
     '''Perform OLS regression of Metascore on genre dummies and create csv'''
@@ -95,11 +97,12 @@ def metascore_ols_regression(out_path):
     model_summary = model.summary()
     
     
-    plt.rc("figure", figsize=(12, 7))
-    plt.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
-    plt.axis("off")
+    fig3, ax3 = plt.subplots(figsize=(12, 7))
+    
+    ax3.text(0.01, 0.05, str(model_summary), {"fontsize": 10}, fontproperties = "monospace")
+    ax3.axis("off")
     plt.tight_layout()
-    plt.savefig(out_path)
+    fig3.savefig(out_path)
     
 if __name__ == "__main__":
     os.makedirs(OUTPUT_DIR, exist_ok=True)
