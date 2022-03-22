@@ -25,13 +25,13 @@ We document all of the features used in our analysis in the [Data Dictionary](ht
 
 #### Process
 
-When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. We scraped the data from IMDb using "Beautiful Soup" and "requests" packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this was a potential issue and address our fix to this problem below in the cleaning section.
+When we decided to make our topic best-selling movies, we turned to the best website for raw movie data: IMDb. We scraped the data from IMDb using the `Beautiful Soup` and `requests` packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, number of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this was a potential issue and address our fix to this problem below in the cleaning section.
 
 #### Limitations
 
 One important limitation of our analysis is with our methodology for scraping the raw data from IMDb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. Importantly, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
 
-A second limitation of our data is that IMDb ratings, and, to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our analysis, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie is more prone to be IMDb users (and therefore more likely to leave a rating).
+A second limitation of our data is that IMDb ratings, and, to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our analysis, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie are more prone to be IMDb users (and therefore more likely to leave a rating).
 
 Third, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. Another extension of our analysis would be to control for inflation and combine another dataset for marketing expenditure.  
 
@@ -71,7 +71,7 @@ We also wanted to visually assess the relationship between the rating (IMDb and 
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Metascore_by_Grossing.png)
 
-As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money also were well received movies. 
+As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money were also well received movies. 
 
 Finally, we assessed the relationship between IMDb score and Metascore to see how strong the correlation between this two variables was.
 
