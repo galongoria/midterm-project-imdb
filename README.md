@@ -45,11 +45,11 @@ We also needed to create dummy variables for the different genres so that we cou
 
 ## Exploratory Data Analysis
 
-After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. Our most notable results and charts are reported here, while underlying statistical output can be found under [decade_analysis.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/decade_analysis.csv) and additional figures can be found in the [figures](https://github.com/ElliottMetzler/midterm-project-imdb/tree/main/figures) sub-directory.
+After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodels` packages. Our most notable results and charts are reported here, while underlying statistical output can be found under [decade_analysis.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/decade_analysis.csv) and additional figures can be found in the [figures](https://github.com/ElliottMetzler/midterm-project-imdb/tree/main/figures) sub-directory.
 
 ### Decades Analysis
 
-First, we analyzed summary statistics on the movies for each decade for which we had data. We found that the highest average IMDb rating across decades appeared in the 1960's. Of course, as noted above, we recognize the likely selection bias in this statistic. As shown in the figure below, there are very few movies that made it into our sample from this decade.
+First, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This analysis shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century (see the figure below displaying the distribution of movies in our sample by decade). As a result, more attention is given to recent films.
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Movies_per_decade.png)
 
@@ -80,14 +80,15 @@ Finally, we assessed the relationship between IMDb score and Metascore to see ho
 As expected, we find a strong correlation between these two scoring metrics.
 
 
-<!-- ## FIT THIS SOMEWHERE
-For the first model, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This model shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century. As a result, more attention is given to recent films. -->
-
 ## Quantitative Analysis
 
 From the cleaned data, we analyzed four regression models using the `statsmodels` package.
 
 The first two OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated.
+
+![IMDb OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/imdb_ols_regression.png)
+
+![Metascore OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/metascore_ols_regression.png)
 
 The second two OLS regression models show the effect of IMDb score or Metascore and genres on gross revenue. Since we notice the strong correlation between IMDb score and Metascore, they have been put in separate regressions. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model.
 
@@ -95,7 +96,7 @@ The second two OLS regression models show the effect of IMDb score or Metascore 
 
 The goal of our analysis is to find the fundemntal genre drivers of film ratings and revenue. We discovered that the genre of horror and comedey had the largest effect on ratings. On the other hand, adventure and sci-fi had the largest positive effect on reveune, while biography, horror and war had the largest negative effects. We can immediately sense that it is perhaps some aspects of the genre's production, rather than the mere presence of genre itself, that drives the difference in revenue. Adventure and sci-fi films, espically in recent years, are usually big budget productions that begin franchises and are heavily promoted with big stars. On the other hand, biographies and horror movies are know to be lower budget, indie productions. 
 
-The focal point for the expansion of our current project should focus on the use of additional data sets and estimation techniques to reduce the effect of co-founders on our analysis. 
+The focal point for the expansion of our current project should focus on the use of additional data sets and estimation techniques to reduce the effect of confounders on our analysis. 
 
 Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMDb user would help us calibrate the value of IMDb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMDb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which will help us control for the effect of genre on revneue.
 
