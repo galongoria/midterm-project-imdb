@@ -18,6 +18,7 @@ def save_plot(figure_obj, output_directory, output_file_name):
 
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
+    sns.set_context("talk") #ADDED LINE
     df = pd.read_csv(IN_FILE_PATH).sort_values("GrossRevenue", ascending=False)[:1000]
     df2 = pd.read_csv(IN_FILE_PATH)
     counts_by_year_data = df2.groupby(df2["ReleaseYear"]//10*10)["Title"].count().reset_index()
@@ -116,7 +117,7 @@ if __name__ == "__main__":
     df.groupby("Genres")["GrossRevenue"]
     .mean()
     .sort_values(ascending=False)[:50]
-    .plot.bar(figsize=(25, 8))
+    .plot.bar(figsize=(20, 10))
     )
     plot9.set(xlabel="Genre Combination", ylabel="Average Domestic Gross Revenue (in Millions of $)",
          title="Relation between genres and average domestic revenue")
@@ -127,8 +128,8 @@ if __name__ == "__main__":
     plot10 = (
     counts_by_year_data.groupby("ReleaseYear")["Title"]
     .mean()
-    .plot.bar(figsize=(8, 8), title="Number of movies released per decade")
+    .plot.bar(figsize=(20, 10), title="Number of movies released per decade")
     )
-    plot10.set(xlabel="Release Decade", ylabel="Number of movies released")
+    plot10.set(xlabel="", ylabel="Number of movies released")
     save_plot(plot10.figure, OUT_DIR, "Movies_per_decade.png")
     plt.close()
