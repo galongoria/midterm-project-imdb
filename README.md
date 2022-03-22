@@ -43,6 +43,14 @@ We found from our summary statistics that the average IMdb rating was at its hig
 
 ## Modeling Analysis
 
+From the cleaned data, four models were created using the “statsmodels" package. These include 1 summary statistics model and 3 regression models.
+
+For the first model, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This model shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century. As a result, more attention is given to recent films.
+
+The second and third OLS regression models evaluate the effect of different genres on either either IMDb score or Metascore. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. In both models, horror, comedy, and have the highest magnitude among statistically significant variables. This finding agrees with the fact that IMDb and Metascore are correlated.
+
+The fourth OLS regression model shows effect of genres on revenue, which yields a statistically significant coefficient with respect to IMDb, Metascore and the Release Year. This shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model.
+
 ## Conclusions
 
 Need to include here a summary of:
