@@ -84,20 +84,20 @@ As expected, we find a strong correlation between these two scoring metrics.
 
 From the cleaned data, we analyzed four regression models using the `statsmodels` package.
 
-The first two OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated.
+The first two OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated. We present the results of these regressions below.
 
-### IMDb OLS Regression Results
+#### IMDb OLS Regression Results
 ![IMDb OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/imdb_ols_regression.png)
 
-### Metascore OLS Regression Results
+#### Metascore OLS Regression Results
 ![Metascore OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/metascore_ols_regression.png)
 
-The second two OLS regression models show the effect of IMDb score or Metascore and genres on gross revenue. Since we notice the strong correlation between IMDb score and Metascore, they have been put in separate regressions. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model.
+The second two OLS regression models show the effect of IMDb score or Metascore and genres on gross revenue. Since we notice the strong correlation between IMDb score and Metascore, they have been put in separate regressions. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model. We present the results of these regressions below.
 
-### Revenue ~ IMDb Regression Results
+#### Revenue ~ IMDb Regression Results
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/revenue_imdb_ols_regression.png)
 
-### Revenue ~ Metascore Regression Results
+#### Revenue ~ Metascore Regression Results
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/revenue_meta_ols_regression.png)
 
 ## Conclusions
