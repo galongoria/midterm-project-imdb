@@ -4,7 +4,7 @@
     \begin{itemize}
         \item Certain genres have an effect on IMDb score and Metascore
         \item Several variables were statistically significant
-        \item Results for IMDb score and Metascore showed similarities
+        \item Results for IMDb score and Metascore were very similar
     \end{itemize}
     \begin{figure}[ht]
         \begin{minipage}[b]{0.45\linewidth}
