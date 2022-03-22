@@ -73,7 +73,6 @@ We also wanted to visually assess the relationship between the rating (IMDb and 
 As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money also were well received movies. 
 
 
-
 ## Modeling Analysis
 
 From the cleaned data, five models were created using the “statsmodels" package. These include 1 summary statistic model and 4 regression models.
@@ -86,12 +85,7 @@ The final OLS regression model shows effect of revenue on IMDb score, Metascore,
 
 ## Conclusions
 
-
-* Goal of Analysis and Conclusions: 
-
 The goal of our analysis is to find the fundemntal genre drivers of film ratings and revenue. We discovered that the genre of horror and comedey had the largest effect on ratings. On the other hand, adventure and sci-fi had the largest positive effect on reveune, while biography, horror and war had the largest negative effects. We can immediately sense that it is perhaps some aspects of the genre's production, rather than the mere presence of genre itself, that drives the difference in revenue. Adventure and sci-fi films, espically in recent years, are usually big budget productions that begin franchises and are heavily promoted with big stars. On the other hand, biographies and horror movies are know to be lower budget, indie productions. 
-
-* Limitations of the Project:
 
 The focal point for the expansion of our current project should focus on the use of additional data sets and estimation techniques to reduce the effect of co-founders on our analysis. 
 
@@ -103,8 +97,11 @@ Finally, we had to eliminate entries due to missing data values. In further anal
 
 ## Instructions to Reproduce Analysis:
 
+NOTE: These reproduction instructions expect that the user is running everything through Vertex AI. All instructions run through terminal.
+
 1) Set-up Instructions:
-	* Run `pip install -r requirements.txt` in terminal
+	* Run `pip install -r requirements.txt`
+	* Run `cd midterm-project-imdb`
 
 2) Instructions to scrape and clean data:
 	* Run `python3 code/imdb_scraper.py` to scrape the data from the IMDb website. The script [imdb_scraper.py](https://github.com/ElliottMetzler/midterm-project-imdb/blob/quant/code/imdb_scraper.py) will navigate to [IMDb pages](https://www.imdb.com/search/title/?title_type=feature&num_votes=25000,&genres=), scrape the data, and store it as a csv file. The output is stored in the [raw](https://github.com/ElliottMetzler/midterm-project-imdb/tree/quant/data/raw) data folder as [imdb_scraped.csv](https://github.com/ElliottMetzler/midterm-project-imdb/blob/quant/data/raw/imdb_scraped.csv)
