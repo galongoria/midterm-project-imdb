@@ -15,12 +15,12 @@ Due: 3/22/2022
 
 ## Introduction
 
-Need to include here a quick summary of:
-* Goal of analysis
-The goal of our analysis is to understand consumer perference of cinematic genres over the timeserie of data avilable. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
-* Methodology
-By scraping data from IMBD, we collected data points with features important to our analysis and have been validated by a high volume of user. We then cleaned the data by removing entries with missing data field. We then created dummie variables and conduct exploratry data analysis with Python. 
-* Findings
+* Goal of Analysis:
+The goal of our analysis is to understand consumer perference of cinematic genres over the timeseries of the available data. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
+* Methodology: 
+By scraping data from IMBD, we collected data points with features important to our analysis and have been validated by a high volume of users. We then cleaned the data by removing entries with missing data field. We then created dummy variables and conduct exploratory data analysis with Python. 
+
+We found that movie genres and release years can exert pressure on movie ratings and revenue. 
 
 ## Data
 
@@ -28,31 +28,45 @@ The features used in our analysis are summarized in the [Data Dictionary](https:
 
 ### Scraping
 
-When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMdb. Elliot scraped the data from IMdb using "Beautiful Soup" and "requests" as his python packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMdb website we set our schema as title, release year, certificates (rating), run time, genres, IMdb rating, Metascore rating, # of votes for IMdb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this could become an issue and decided to fix this problem when cleaning the data.
+When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. Elliot scraped the data from IMDb using "Beautiful Soup" and "requests" as his python packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this could become an issue and decided to fix this problem when cleaning the data.
 
-We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from imdb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. However, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
+We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from IMDb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. However, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
 
-Another limitation of our data is that IMdb ratings and to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our study, it is unclear to us whether IMdb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMdb rating may reflect whether the demographics for a certain movie is more prone to be IMdb users (and therefore more likely to leave a rating).
+Another limitation of our data is that IMDb ratings and to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our study, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie is more prone to be IMDb users (and therefore more likely to leave a rating).
 
 Lastly, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. An additional route of analysis would be to control for inflation and combine another dataset for marketing spendings.  
 
 
 ### Cleaning
 
-From the scraped data we needed to have more palatable data from processing and analyzing, so then Austin cleaned the data using "pandas" and "os" as his packages. The raw data collected from IMdb needed mainly to be cleaned as most of the entries in the raw data are written as text and not integers or floats. As well the scraper picked up a lot of extraneous values and words when scraping the pages. In order to get rid of most of this unnecessary information Austin stripped most of the data. For example, the Gross Revenue column of our raw data set had both "$" and "M" attached to the earnings, stripping this and then formatting to a float allowed for a singular number of revenue based in the millions of earnings.
+From the scraped data we needed to have more palatable data from processing and analyzing, so then Austin cleaned the data using "pandas" and "os" as his packages. The raw data collected from IMDb needed mainly to be cleaned as most of the entries in the raw data are written as text and not integers or floats. As well the scraper picked up a lot of extraneous values and words when scraping the pages. In order to get rid of most of this unnecessary information Austin stripped most of the data. For example, the Gross Revenue column of our raw data set had both "$" and "M" attached to the earnings, stripping this and then formatting to a float allowed for a singular number of revenue based in the millions of earnings.
 
 As well we needed to create dummy variables for the differnet genres, so that each could be accessed when processing the data. To do this Austin created variables for each genre by separating the strings at the comma in between each genre listing. Then he concatenated the genres back into the data set. This basically allowed for categorical variables that were separated and easier to use in regressions and data analysis.
 
 ## Exploratory Data Analysis
+After scraping and cleaning the data we were finally able to manipulate and analyze the dataframe we had created. With Kashaf in charge of the analysis, she chose to use "pandas" as well as "statsmodel.api" for her analysis. First we thought it would be a good idea to look at the different summary statistics for each decade that movies were released in. This was done by creating a "Decade" variable that took every "ReleaseYear" and divided by 10 with no decimals then remultiplied by ten to normalize to each decade. Then we grouped all movies by the decade of their release, and proceeded to run summary statistics of the variables by each decade by the pandas function `.describe`.
+
+We found from our summary statistics that the average IMDb rating was at its highest during the 1960's. As well we found that ever since the 1960's IMDb ratings on average decade to decade have steadily decreased. Metascore ratings also see this trend as well decade to decade a steady drop in average ratings, but not starting in the 1960's but actually earlier. The problem though could be from the fewer amount of films produced in these earlier decades, as we see counts of movies on the rise decade by decade. If there were more movies rated from the 1930's-1960's there would be easier comparisions to be made through the decades, but this list isnt as comprehensive on the earlier decades. A possible extension of this analysis could be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
 
 ## Modeling Analysis
 
+
 ## Conclusions
 
-Need to include here a summary of:
-* Goal of analysis and conclusions
-* limitations of the project
-* Areas where we would have improved or expanded the project if we had more time
+
+* Goal of Analysis and Conclusions: 
+
+The goal of our analysis is to find the fundemntal genre drivers of film ratings and revenue. We discovered that the genre of horror and comedey had the largest effect on ratings. On the other hand, adventure and sci-fi had the largest positive effect on reveune, while biography, horror and war had the largest negative effects. We can immediately sense that it is perhaps some aspects of the genre's production, rather than the mere presence of genre itself, that drives the difference in revenue. Adventure and sci-fi films, espically in recent years, are usually big budget productions that begin franchises and are heavily promoted with big stars. On the other hand, biographies and horror movies are know to be lower budget, indie productions. 
+
+* Limitations of the Project:
+
+The focal point for the expansion of our current project should focus on the use of additional data sets and estimation techniques to reduce the effect of co-founders on our analysis. 
+
+Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMDb user would help us calibrate the value of IMDb ratings. On the other hand, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMDb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which will help us control for the effect of genre on revneue.
+
+But our analysis could also benefit through the use of interaction variables. Specifically, we could investigate how different genre's interact with each other and how different genres interact with the release year variable.
+
+Finally, we had to eliminate entries due to missing data values. In further analysis, we could partition some of the data into a training set and train an alogrithm to automatically fill in some of the missing data values. This estimation will introduce more varience to our regression, but may be worthwhile for the data entries they were able to recover. As a finishing touch, we could use the number of peer movies, or how dense are the data around an entry, to give a confidence rating that vary on the different percentiles of the variable of interest.
 
 ## Instructions to Reproduce Analysis:
 
@@ -75,3 +89,5 @@ Need to include here a summary of:
 	 	* The second OLS regression regresses Gross Revenue on Metascore and genre dummies. The regression results are summarized in [revenue_meta_ols_regression.png](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/quantitative%20analysis/revenue_meta_ols_regression.png)
 	 	* The third OLS regression regresses IMDb Rating on genre dummies. The regression results are summarized in [imdb_ols_regression.png](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/quantitative%20analysis/imdb_ols_regression.png)
 	 	* The fourth OLS regression regresses Metascore on genre dummies. The regression results are summarized in [metascore_ols_regression.png](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/quantitative%20analysis/metascore_ols_regression.png)
+
+
