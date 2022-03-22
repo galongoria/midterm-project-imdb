@@ -15,26 +15,25 @@ Due: 3/22/2022
 
 ## Introduction
 
-* Goal of Analysis:
-The goal of our analysis is to understand consumer perference of cinematic genres over the timeseries of the available data. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally.
-* Methodology: 
-By scraping data from IMBD, we collected data points with features important to our analysis and have been validated by a high volume of users. We then cleaned the data by removing entries with missing data field. We then created dummy variables and conduct exploratory data analysis with Python. 
-
-We found that movie genres and release years can exert pressure on movie ratings and revenue. 
+For this project, we set out to use [IMDb](https://www.imdb.com/) data on the top United States grossing movies to gain a better understanding of consumer preferences for different genres. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally. To achieve this aim, we created a webscraping tool to retrieve data from IMDb's website before cleaning it and performing various linear regression analyses. As we had hoped, we found that certain genres listed on each movie's IMDb page are associated with higher ratings (popularity or critical), though sometimes these results differed by whether or not we attempted to predict a crowd based rating or a critics score. We also analyzed revenue as predicted by ratings, finding that in some, but not all, cases, the genres predicting higher ratings also predicted higher revenue.
 
 ## Data
 
-The features used in our analysis are summarized in the [Data Dictionary](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/data/clean/data_dictionary.csv), which includes the feature name, definition, type, and example values.
+We document all of the features used in our analysis in the [Data Dictionary](https://github.com/ElliottMetzler/midterm-project-imdb/blob/document/data/clean/data_dictionary.csv). This includes the feature name, definition, type, and a few example values.
 
 ### Scraping
 
-When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. Elliot scraped the data from IMDb using "Beautiful Soup" and "requests" as his python packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this could become an issue and decided to fix this problem when cleaning the data.
+#### Process
 
-We note that one of the important limitations of our analysis is with our methodology for scraping the raw data from IMDb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. However, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
+When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. Elliott scraped the data from IMDb using "Beautiful Soup" and "requests" packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this was a potential issue and address our fix to this problem below in the cleaning section.
 
-Another limitation of our data is that IMDb ratings and to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our study, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie is more prone to be IMDb users (and therefore more likely to leave a rating).
+#### Limitations
 
-Lastly, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. An additional route of analysis would be to control for inflation and combine another dataset for marketing spendings.  
+One important limitation of our analysis is with our methodology for scraping the raw data from IMDb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. Importantly, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
+
+A second limitation of our data is that IMDb ratings, and, to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our analysis, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie is more prone to be IMDb users (and therefore more likely to leave a rating).
+
+Third, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. Another extension of our analysis would be to control for inflation and combine another dataset for marketing expenditure.  
 
 
 ### Cleaning
