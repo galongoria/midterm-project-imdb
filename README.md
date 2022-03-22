@@ -25,7 +25,7 @@ We document all of the features used in our analysis in the [Data Dictionary](ht
 
 #### Process
 
-When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. Elliott scraped the data from IMDb using "Beautiful Soup" and "requests" packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this was a potential issue and address our fix to this problem below in the cleaning section.
+When we decided to make our topic best-selling movies for our project, we turned to the best website for raw movie data: IMDb. We scraped the data from IMDb using "Beautiful Soup" and "requests" packages. Both of these packages allowed for seamless extraction of data from a URL. From the IMDb website we set our schema as title, release year, certificates (rating), run time, genres, IMDb rating, Metascore rating, # of votes for IMDb rating, and gross revenue. We then took a deeper look at genre and noticed that most movies were categorized to more than one genre. We knew that this was a potential issue and address our fix to this problem below in the cleaning section.
 
 #### Limitations
 
@@ -43,13 +43,20 @@ From the scraped data we needed to have more palatable data from processing and 
 As well we needed to create dummy variables for the differnet genres, so that each could be accessed when processing the data. To do this Austin created variables for each genre by separating the strings at the comma in between each genre listing. Then he concatenated the genres back into the data set. This basically allowed for categorical variables that were separated and easier to use in regressions and data analysis.
 
 ## Exploratory Data Analysis
-After scraping and cleaning the data we were finally able to manipulate and analyze the dataframe we had created. With Kashaf in charge of the analysis, she chose to use "pandas" as well as "statsmodel.api" for her analysis. First we thought it would be a good idea to look at the different summary statistics for each decade that movies were released in. This was done by creating a "Decade" variable that took every "ReleaseYear" and divided by 10 with no decimals then remultiplied by ten to normalize to each decade. Then we grouped all movies by the decade of their release, and proceeded to run summary statistics of the variables by each decade by the pandas function `.describe`.
 
-We found from our summary statistics that the average IMDb rating was at its highest during the 1960's. As well we found that ever since the 1960's IMDb ratings on average decade to decade have steadily decreased. Metascore ratings also see this trend as well decade to decade a steady drop in average ratings, but not starting in the 1960's but actually earlier. The problem though could be from the fewer amount of films produced in these earlier decades, as we see counts of movies on the rise decade by decade. If there were more movies rated from the 1930's-1960's there would be easier comparisions to be made through the decades, but this list isnt as comprehensive on the earlier decades. A possible extension of this analysis could be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
+After scraping and cleaning the data, our first analytical step was to perform some exploratory analysis to gain a better understanding of our data. We used the `pandas` and `statsmodel.api` packages. 
 
-After scraping and cleaning the data we were finally able to manipulate and analyze the dataframe we had created. With Kashaf in charge of the analysis, she chose to use "pandas" as well as "statsmodel.api" for her analysis. First we thought it would be a good idea to look at the different summary statistics for each decade that movies were released in. This was done by creating a "Decade" variable that took every "ReleaseYear" and divided by 10 with no decimals then remultiplied by ten to normalize to each decade. Then we grouped all movies by the decade of their release, and proceeded to run summary statistics of the variables by each decade by the pandas function `.describe`.
+First, we analyzed summary statistics on the movies for each decade for which we had data. We found that the highest average IMDb rating across decades appeared in the 1960's. Of course, as noted above, we recognize the likely selection bias in this statistic. As shown in the figure below, there are very few movies that made it into our sample from this decade.
 
-We found from our summary statistics that the average IMdb rating was at its highest during the 1960's. As well we found that ever since the 1960's IMdb ratings on average decade to decade have steadily decreased. Metascore ratings also see this trend as well decade to decade a steady drop in average ratings, but not starting in the 1960's but actually earlier. The problem though could be from the fewer amount of films produced in these earlier decades, as we see counts of movies on the rise decade by decade. If there were more movies rated from the 1930's-1960's there would be easier comparisions to be made through the decades, but this list isnt as comprehensive on the earlier decades. A possible extension of this analysis could be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Movies_per_decade.png)
+
+We also found that since the 1960's, the IMDb ratings on average by decade have steadily declined. We see a similar trend in Metascore ratings, though the Metascore ratings decline starts earlier. As mentioned above, a good extension of this analysis would be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
+
+Since we were most interested in better understanding various genres impact on movie performance by either rating or income metrics, we also explored this in our first review of the data. In the next figure, we show the top 50 grossing movies.
+
+![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Top_50_Grossing.png)
+
+
 
 ## Modeling Analysis
 
