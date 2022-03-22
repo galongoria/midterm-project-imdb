@@ -38,9 +38,10 @@ Third, the gross revenue may be a poor measure of popularity due to the confound
 
 ### Cleaning
 
-From the scraped data we needed to have more palatable data from processing and analyzing, so then Austin cleaned the data using "pandas" and "os" as his packages. The raw data collected from IMDb needed mainly to be cleaned as most of the entries in the raw data are written as text and not integers or floats. As well the scraper picked up a lot of extraneous values and words when scraping the pages. In order to get rid of most of this unnecessary information Austin stripped most of the data. For example, the Gross Revenue column of our raw data set had both "$" and "M" attached to the earnings, stripping this and then formatting to a float allowed for a singular number of revenue based in the millions of earnings.
+With our raw data from IMDb, we needed to clean some fields so we could use them in our analysis. We cleaned the data using the `pandas` package. The key cleaning issue with the raw data was to convert some fields appearing as text to integers or floats. Additionally, the scraper picked up some extraneous values and words when scraping the pages. In order to get rid of extraneous values and convert types, we stripped most of the data. For example, the Gross Revenue column of our raw data set had both "$" and "M" attached to the earnings, stripping this and then formatting to a float allowed for a singular number of revenue in millions USD.
 
-As well we needed to create dummy variables for the differnet genres, so that each could be accessed when processing the data. To do this Austin created variables for each genre by separating the strings at the comma in between each genre listing. Then he concatenated the genres back into the data set. This basically allowed for categorical variables that were separated and easier to use in regressions and data analysis.
+We also needed to create dummy variables for the different genres so that we could run our regression analyses. The complicating factor in this step was that the genres were listed together in the raw data, so we needed to first split them into individual columns before using tools from `pandas` to dummy code the genres.
+
 
 ## Exploratory Data Analysis
 
