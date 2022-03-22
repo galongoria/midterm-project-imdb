@@ -1,0 +1,63 @@
+\end{frame}
+
+\begin{frame}{Analysis: Rating vs Genre}
+    \begin{itemize}
+        \item Certain genres have an effect on IMDb score and Metascore
+        \item Several variables were statistically significant
+        \item Results for IMDb score and Metascore were very similar
+    \end{itemize}
+    \begin{figure}[ht]
+        \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=103]{presentation/meta_ols.png}
+            \caption{Regression of Metascore on Genre}
+        \end{minipage}
+        \hspace{0.5cm}
+        \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=98]{presentation/imdb_ols.png}
+            \caption{Regression of IMDb Score on Genre}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Analysis: Revenue vs Rating}
+    \begin{itemize}
+        \item Metascore coefficient is statistically significant
+        \item An increase in Metascore by 1 point leads to about a \$1.29 mil increase in gross revenue, ceteris paribus
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=3cm]{presentation/ols_meta.png}
+        \caption{Regression of Gross Revenue on Metascore}
+        \label{fig:my_label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Limitations: Time Constraints}
+    \begin{itemize}
+        \item Domestic gross revenue is not inflation-adjusted
+        \item Potential endogeneity as a result
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=8cm]{presentation/Release_Year_by_Grossing.png}
+        \caption{1}
+        \label{fig:my_label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Limitations: Data Constraints}
+    \begin{itemize}
+        \item Some fields were empty and those observations were dropped
+        \item IMDb not used as much in the distant past (Figure: 2)
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=7cm]{presentation/movie_by_year.png}
+        \caption{2}
+        \label{fig:my_label}
+    \end{figure}
+\end{frame}
+
+\end{document}
