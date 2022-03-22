@@ -1,6 +1,5 @@
 requests
 bs4
-nb_black
 black
 matplotlib
 seaborn

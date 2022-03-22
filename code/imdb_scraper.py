@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import re
 import os
 
 # Constants
@@ -139,10 +138,9 @@ def scrape_across_genres(list_of_genres):
     for genre in list_of_genres:
         try:
             df = scrape_genre(genre)
-            print(f"Successfully Scraped Top 250 Film Data for {genre}")
             frames.append(df)
         except:
-            print(f"Failed to Scrape Top 250 Fild Data for {genre}")
+            pass
 
     return pd.concat(frames)
 
