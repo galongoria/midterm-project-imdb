@@ -4,6 +4,7 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 # Constants
 IN_FILE_PATH = os.path.join("data", "clean", "imdb_clean.csv")
 OUT_DIR = "figures"
@@ -13,12 +14,12 @@ OUT_DIR = "figures"
 def save_plot(figure_obj, output_directory, output_file_name):
     """Function takes in a figure, the output directory and file name and saves the figure"""
     path = os.path.join(output_directory, output_file_name)
-    figure_obj.savefig(path)
+    figure_obj.savefig(path, bbox_inches='tight')
 
 
 if __name__ == "__main__":
-    os.makedirs(OUT_DIR, exist_ok=True)
-    sns.set_context("talk") #ADDED LINE
+    os.makedirs(OUT_DIR, exist_ok=True) 
+    sns.set_context("talk", font_scale=1.2) #ADDED LINE
     df = pd.read_csv(IN_FILE_PATH).sort_values("GrossRevenue", ascending=False)[:1000]
     df2 = pd.read_csv(IN_FILE_PATH)
     counts_by_year_data = df2.groupby(df2["ReleaseYear"]//10*10)["Title"].count().reset_index()
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     plot1.set(xlabel="Title", ylabel="Domestic Gross Revenue (in Millions of $)")
     save_plot(plot1.figure, OUT_DIR, "Top_50_Grossing.png")
     plt.close()
-
+    
     # Relation between release year and domestic revenue plot 
     plot2 = plt.figure(figsize=(20, 10))
     plot2 = sns.scatterplot(data=df, x="ReleaseYear", y="GrossRevenue")
@@ -84,7 +85,7 @@ if __name__ == "__main__":
     )
     
     # Plot of percentage of Top 1000 US Grossing Movies by Genre
-    plot6 = plt.figure(figsize=(18,6))
+    plot6 = plt.figure(figsize=(20,8))
     plot6 = sns.barplot(data=genre_props,
             x = "Proportion",
             y = "Genre",
@@ -111,13 +112,13 @@ if __name__ == "__main__":
          title="Relation between release year and domestic revenue with Adventure movies highlighted")
     save_plot(plot8.figure, OUT_DIR, "Release_year_by_grossing_adventure.png")
     plt.close()
-    
+
     # Plot of relation between genres and average domestic revenue
     plot9 = (
     df.groupby("Genres")["GrossRevenue"]
     .mean()
     .sort_values(ascending=False)[:50]
-    .plot.bar(figsize=(20, 10))
+    .plot.bar(figsize=(25, 10))
     )
     plot9.set(xlabel="Genre Combination", ylabel="Average Domestic Gross Revenue (in Millions of $)",
          title="Relation between genres and average domestic revenue")
