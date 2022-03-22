@@ -70,7 +70,7 @@ We also wanted to visually assess the relationship between the rating (IMDb and 
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Metascore_by_Grossing.png)
 
-
+As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money also were well received movies. 
 
 ## Modeling Analysis
 
