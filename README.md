@@ -15,7 +15,7 @@ Due: 3/22/2022
 
 ## Introduction
 
-For this project, we set out to use [IMDb](https://www.imdb.com/) data on the top United States grossing movies to gain a better understanding of consumer preferences for different genres. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundementally. To achieve this aim, we created a webscraping tool to retrieve data from IMDb's website before cleaning it and performing various linear regression analyses. As we had hoped, we found that certain genres listed on each movie's IMDb page are associated with higher ratings (popularity or critical), though sometimes these results differed by whether or not we attempted to predict a crowd based rating or a critics score. We also analyzed revenue as predicted by ratings, finding that in some, but not all, cases, the genres predicting higher ratings also predicted higher revenue.
+For this project, we set out to use [IMDb](https://www.imdb.com/) data on the top United States grossing movies to gain a better understanding of consumer preferences for different genres. Almost since the inception of the moving picture, the best-selling movies have commanded a passage straight into our hearts, and through time, our cultural lingo. By understanding the characteristics that make a top-selling movie, we aim to investigate what makes the audience tick, fundamentally. To achieve this aim, we created a webscraping tool to retrieve data from IMDb's website before cleaning it and performing various linear regression analyses. As we had hoped, we found that certain genres listed on each movie's IMDb page are associated with higher ratings, though sometimes these results differed by whether or not we attempted to predict a crowd-based rating or a critics score. We also analyzed revenue as predicted by ratings, finding that in some, but not all, cases, the genres predicting higher ratings also predicted higher revenue.
 
 ## Data
 
@@ -31,7 +31,7 @@ When we decided to make our topic best-selling movies, we turned to the best web
 
 One important limitation of our analysis is with our methodology for scraping the raw data from IMDb's site. We only scraped movies for which we were able to retrieve all data fields desired from the analysis. Thus, in instances where movies were missing a data field, we excluded these from the scraping process. Importantly, this could skew our analysis away from less popular or older movies. A potential extension of our analysis would be to attempt to scrape these movies and interpolate or estimate missing values where possible, though this process would take more time and consideration than available to us for this project.
 
-A second limitation of our data is that IMDb ratings, and, to a lesser extent, Metascore rating do not reflect a consistent rubric. During the time scope of our analysis, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator are used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie are more prone to be IMDb users (and therefore more likely to leave a rating).
+A second limitation of our data is that IMDb ratings, and, to a lesser extent, Metascore ratings do not reflect a consistent rubric. During the time scope of our analysis, it is unclear to us whether IMDb or Metascore changed their internal rubric. It is also unclear if the same evaluator is used for movies falling into different genres. Furthermore, the number of votes for IMDb rating may reflect whether the demographics for a certain movie are more prone to be IMDb users (and therefore more likely to leave a rating).
 
 Third, the gross revenue may be a poor measure of popularity due to the confounding effect of inflation and the unknown spending on marketing. Another extension of our analysis would be to control for inflation and combine another dataset for marketing expenditure.  
 
@@ -49,73 +49,71 @@ After scraping and cleaning the data, our first analytical step was to perform s
 
 ### Decades Analysis
 
-First, we calculated summary statistics by release decade. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb score, Metascore, votes, and gross revenue.  This analysis shows the effects increased audience engagement within the IMDb community. For instance, movies since the 90s have received relatively more votes on IMDb and Metascore, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue has increased sharply since the 90s; however, this is mostly due to lack of inlfation-adjusted figures. Similarly, we can see this data is biased because it has less observations earlier in the century (see the figure below displaying the distribution of movies in our sample by decade). As a result, more attention is given to recent films.
+First, we calculated summary statistics by the decade in which the movie was released. These included the mean, maximium, minimum, and certain quantile values of runtime, IMDb rating, Metascore, votes, and gross revenue.  The analysis showed that audience engagement increased within the IMDb community over time. For instance, movies since the 1990's have received relatively more IMDb votes, which may have resulted in lower average ratings. This analysis also reveals some important limitations in our data. For example, average gross revenue increased sharply since the 1990's which can be partially attributed to the lack of inflation-adjusted figures. Furthermore, we can see this data is biased because it has fewer observations earlier in the century as shown in the figure below.
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Movies_per_decade.png)
 
-We also found that since the 1960's, the IMDb ratings on average by decade have steadily declined. We see a similar trend in Metascore ratings, though the Metascore ratings decline starts earlier. As mentioned above, a good extension of this analysis would be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few title from the 1930's-1960's.
+We also found that since the 1960's the average IMDb ratings by decade have steadily declined. We saw a similar trend in Metascores, though the Metascores decline started earlier. As mentioned above, a good extension of this analysis would be to find a database that has more movies from the earlier decades of cinema so that we could have better analysis across decades, rather than having so few titles from the 1930's to 1960's.
 
 ### Genres Analysis
 
-Since we were most interested in better understanding various genres impact on movie performance by either rating or income metrics, we also explored this in our first review of the data. In the next figure, we display the share of movies in our sample that list each possible genre on their IMDb page.
+Since we were most interested in better understanding various genres' impact on movie performance, we also explored this in our first review of the data. In the next figure, we display the share of movies in our sample that list each possible genre on their IMDb page.
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Percentage_of_movies_genre.png)
 
-As shown by the figure, in our sample of the highest grossing movies on IMDb, they tent to be Adventure, Action, Comedy, and Drama movies.
+As shown by the figure, in our sample of the highest grossing movies on IMDb, they tend to be Adventure, Action, Comedy, and Drama movies.
 
 ### Rating and Grossing Analysis
 
-We also wanted to visually assess the relationship between the rating (IMDb and Metascore) and movie gross income. We figured that this would help us see if we had a strong correlation between the movie being "good" and making lots of money. We display the results first of IMDb on gross then of Metascore on gross.
+We also wanted to visually assess the relationship between the rating (IMDb and Metascore) and movie gross revenue. We figured that this would help us see if we had a strong correlation between the movie being achieving either a high IMDb rating or Metascore and a high gross revenue figure. We display the results first of IMDb rating on gross revenue then of Metascore on gross revenue.
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/IMDBRating_by_Grossing.png)
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Metascore_by_Grossing.png)
 
-As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating into quadrants). Notably, we do not see movies that have a high grossing income (y-axis) and a low rating score (x-axis). Thus, we find that the movies in our sample that made a lot of money were also well received movies. 
+As shown by the figures, we see that the majority of the movies in our sample center around the mean of both axes (identified by red lines separating the figures into quadrants). Notably, we do not see movies that have a high grossing revenue (y-axis) and a low rating (x-axis). Thus, we find that the movies in our sample that had high gross revenue were also well received movies. 
 
-Finally, we assessed the relationship between IMDb score and Metascore to see how strong the correlation between this two variables was.
+Finally, we assessed the relationship between IMDb rating and Metascore to see the strength of the correlation between these two variables.
 
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/figures/Scatter_IMDB_by_metascore.png)
 
-As expected, we find a strong correlation between these two scoring metrics.
+As expected, we find a strong correlation between these two metrics.
 
 
 ## Quantitative Analysis
 
 From the cleaned data, we analyzed four regression models using the `statsmodels` package.
 
-The first two OLS regression models evaluate the effect of different genres on either IMDb score or Metascore. We saw these 2 variables are correlated and see how Metascore and IMDb were affected by them. In the IMDb model, a total of 11 genres out of the 20 genres we have accounted for are statistically significant, whereas for the Metascore model, a total of 12 genres are statistically significant. The “sport” variable is the difference between these two models in terms of statistical significance. The ranking of magnitudes were slightly different in these models. In the IMDb model, horror, comedy, and family have the highest magnitude among statistically significant variables, while in the Metascore model, those ranks are held by horror, musical and comedy. In addition, the sign of every significant coefficient is the same, which coincides with our assumption that IMDb and Metascore are correlated. We present the results of these regressions below.
+The first two OLS regression models show the effect of IMDb rating or Metascore and genres on gross revenue. Since we noticed the strong correlation between IMDb rating and Metascore, we ran separate regressions. We noticed a difference in constants due to Metascore being assigned by critics and IMDb rating being a result of fan votes along with the difference in scale of the variables. The model yielded statistically significant coefficients for IMDb rating and Metascore. We present the results of these regressions below.
 
-#### IMDb OLS Regression Results
-![IMDb OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/imdb_ols_regression.png)
-
-#### Metascore OLS Regression Results
-![Metascore OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/metascore_ols_regression.png)
-
-The second two OLS regression models show the effect of IMDb score or Metascore and genres on gross revenue. Since we notice the strong correlation between IMDb score and Metascore, they have been put in separate regressions. We notice a difference in constants due to Metascore being assigned by critics and IMDb score being a result of fan votes. The model yields a statistically significant coefficient with respect to IMDb and the Metascore, which shows the accuracy of this model and consistency with our previous findings. However, it is hard to evaluate the statistical significance of gross revenue on one movie, since one movie can encompass several genres that might/might not be statistically significant in this model. We present the results of these regressions below.
-
-#### Revenue ~ IMDb Regression Results
+#### Revenue ~ IMDb Rating + Genres Regression Results
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/revenue_imdb_ols_regression.png)
 
-#### Revenue ~ Metascore Regression Results
+#### Revenue ~ Metascore + Genres Regression Results
 ![](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/revenue_meta_ols_regression.png)
+
+The second two OLS regression models evaluated the effect of different genres on IMDb rating and Metascore, respectively. In the IMDb rating regression, a total of 11 out of the 20 genres were statistically significant, whereas in the Metascore regression, a total of 12 genres were statistically significant. The differing variable in terms of statistical significance between the two models was the Sport genre. Interestingly, the coefficients with the largest order of magnitude differed slightly between the two models. In the IMDb rating regression, the Horror, Comedy, and Family genres had the highest magnitude among the statistically significant variables, while in the Metascore regression, the Horror, Musical, and Comedy genres had the highest magnitude. In addition, the sign of each significant coefficient aligns. We present the results of these regressions below.
+
+#### IMDb Rating ~ Genres OLS Regression Results
+![IMDb OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/imdb_ols_regression.png)
+
+#### Metascore ~ Genres OLS Regression Results
+![Metascore OLS Regression](https://github.com/ElliottMetzler/midterm-project-imdb/blob/main/quantitative%20analysis/metascore_ols_regression.png)
+
 
 ## Conclusions
 
-In our analysis, we were able to review and analyze how different genres impact ratings and revenue for movies in our sample. We found that genres the Animation and Musical have the largest positive impact on IMDb ratings and Metascore ratings, while the genres Comedy and Horror had the largest negative impact on ratings. Additionally, we found that when estimating revenue, IMDb rating and genres like Adventure and Fantasy had a positive impact, while genres like Biography and War had a significant negative impact. We found similar results in our regression predicting revenue using Metascore.
+In our analysis, we were able to review and analyze how different genres impact ratings and gross revenue for the movies in our sample. We found that the Animation and Musical genres had the largest positive impact on IMDb ratings and Metascore, while the Comedy and Horror genres had the largest negative impact on both ratings. Additionally, we found that when estimating gross revenue, IMDb rating and genres like Adventure and Fantasy had a positive impact, while genres like Biography and War had a negative impact. We found similar results in our regression predicting gross revenue using Metascore.
 
-An expansion of our current project would likely focus on the use of additional data sets and estimation techniques to reduce the effect of confounders on our analysis.
+To overcome some of the limitations that exist with our data scraping methodology and with the actual data available through IMDb's website, we propose some interesting expansions for this project. For instance, a relatively simple expansion would be to add an inflation factor to the gross revenue data. A more complex one may be to pull data on production budget, advertising budget, and awards to make our regressions more robust. Another potentially useful extension could be to expand the scraping mechanism to pull significantly more movies, both historically and with lower gross revenue figures, in order to have a broader sample.
 
-Clear data on how genre influences the kind of audience a movie gets and whether they are likely to be a IMDb user would help us calibrate the value of IMDb ratings. Additionally, we could utilize inflation data to do a present value translation for our revenue figures. This process of calibration could be further extended to give each more an era score, or how they scored relative to movies produced in the same decade. This would further reduce the biases that result from the trend in IMDb ratings. A final data set that would be helpful is the total production budget and total advertising budget of a movie, which could help us control for the effect of genre on revneue. Our analysis could also benefit through the use of interaction variables. Specifically, we could investigate how different genre's interact with each other and how different genres interact with the release year variable.
-
-Finally, we had to eliminate entries due to missing data values. In further analysis, we could partition some of the data into a training set and train an alogrithm to automatically fill in some of the missing data values. This estimation will introduce more varience to our regression, but may be worthwhile for the data entries they were able to recover. As a finishing touch, we could use the number of peer movies, or how dense are the data around an entry, to give a confidence rating that vary on the different percentiles of the variable of interest.
-
+ 
 ## Instructions to Reproduce Analysis:
 
 __NOTE__: These reproduction instructions expect that the user is running everything through Vertex AI on Google Cloud Platform. All instructions run through terminal.
 
 1) Set-up Instructions:
-	* Run `pip install -r requirements.txt`
+	* Run `pip install -r requirements.txt`. This file includes the additional packages necessary to run our code: `requests`, `bs4`, `black`, `matplotlib`, `seaborn`, and `statsmodels`
 	* Run `cd midterm-project-imdb`
 
 2) Instructions to scrape and clean data:
